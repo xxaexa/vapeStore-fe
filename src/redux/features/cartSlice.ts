@@ -1,0 +1,95 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+
+interface Product {
+  cartID: string | undefined;
+  productID: string;
+  img: string;
+  title: string;
+  price: number;
+  amount: number;
+}
+
+interface CartState {
+  cartItems: Product[];
+  numItemsInCart: number;
+  cartTotal: number;
+  shipping: number;
+  orderTotal: number;
+}
+
+const defaultState: CartState = {
+  cartItems: [],
+  numItemsInCart: 0,
+  cartTotal: 0,
+  shipping: 500,
+  orderTotal: 0,
+};
+
+const getCartFromLocalStorage = (): CartState => {
+  const storedCart = localStorage.getItem("cart") as string;
+  const cartData = JSON.parse(storedCart) || defaultState;
+  return cartData;
+};
+
+const cartSlice = createSlice({
+  name: "cart",
+  initialState: getCartFromLocalStorage(),
+  reducers: {
+    addItem: (state, action: PayloadAction<{ product: Product }>) => {
+      const { product } = action.payload;
+      console.log(product);
+      const item = state.cartItems.find(
+        (i) => i.cartID === (product && product.cartID)
+      );
+      if (item) {
+        item.amount += product.amount;
+      } else {
+        state.cartItems.push(product);
+      }
+
+      state.numItemsInCart += product.amount;
+      state.cartTotal += product.price * product.amount;
+      cartSlice.caseReducers.calculateTotals(state);
+      toast.success("Produk ditambahkan ke keranjang");
+    },
+    clearCart: () => {
+      localStorage.setItem("cart", JSON.stringify(defaultState));
+      return defaultState;
+    },
+    removeItem: (state, action: PayloadAction<{ cartID: string }>) => {
+      const { cartID } = action.payload;
+      const product = state.cartItems.find((i) => i.cartID === cartID);
+      console.log(cartID);
+      if (product) {
+        state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
+        state.numItemsInCart -= product.amount;
+        state.cartTotal -= product.price * product.amount;
+        cartSlice.caseReducers.calculateTotals(state);
+        toast.success("Produk dihapus dari keranjang");
+      }
+    },
+    editItem: (
+      state,
+      action: PayloadAction<{ cartID: string; amount: number }>
+    ) => {
+      const { cartID, amount } = action.payload;
+      const item = state.cartItems.find((i) => i.cartID === cartID);
+      if (item) {
+        state.numItemsInCart += amount - item.amount;
+        state.cartTotal += item.price * (amount - item.amount);
+        item.amount = amount;
+        cartSlice.caseReducers.calculateTotals(state);
+        toast.success("Keranjang diperbarui");
+      }
+    },
+    calculateTotals: (state) => {
+      state.orderTotal = state.cartTotal + state.shipping;
+      localStorage.setItem("cart", JSON.stringify(state));
+    },
+  },
+});
+
+export const { addItem, clearCart, removeItem, editItem } = cartSlice.actions;
+
+export default cartSlice.reducer;

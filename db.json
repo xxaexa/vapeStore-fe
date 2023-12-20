@@ -1,0 +1,285 @@
+{
+  "users": [
+    {
+      "email": "gojo@test",
+      "password": "$2a$10$D9ooKxPDuy3dcfqS15LXIOCofNN5BOQEvO5TGfKxObtrMBj6YFssq",
+      "username": "gojo",
+      "id": 1
+    },
+    {
+      "email": "gojo@test.com",
+      "password": "$2a$10$AS1F50Ib2VFGnyA/yWCqTuPXF0QpW6LfFfIZCDvGqvCzHE4lW4iZe",
+      "username": "gojo1",
+      "id": 2
+    },
+    {
+      "email": "gojox@test.com",
+      "password": "$2a$10$P6tPFwgpbuPiapKbL5xo7uXPxBxmlC.xOR71JLRFgt7uk5YKRu7lW",
+      "username": "gojox",
+      "id": 3
+    },
+    {
+      "email": "gojoxxx@test.com",
+      "password": "$2a$10$7htU6tXeuFtycNxXheehr.0SIbNzH7swfUBJnXRME1K0Hm7NSfM92",
+      "username": "gojo",
+      "id": 4
+    },
+    {
+      "email": "admin@test.com",
+      "password": "$2a$10$EPOfdISoBTgbXM3glT096ucCavmX8Yw9YJ17TLdyp8UFDJwQ9nf6q",
+      "username": "admin",
+      "id": 5
+    }
+  ],
+  "product": [
+    {
+      "id": "1",
+      "title": "Aegis Legend",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Mod"
+      ],
+      "price": 490000,
+      "createdAt": "2023-08-30T17:18:39.346Z",
+      "updatedAt": "2023-08-30T17:18:39.346Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "2",
+      "title": "Arcanum",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Liquid"
+      ],
+      "price": 140000,
+      "createdAt": "2023-08-30T17:20:54.119Z",
+      "updatedAt": "2023-08-30T17:20:54.119Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "3",
+      "title": "Argus",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Pod"
+      ],
+      "price": 123000,
+      "createdAt": "2023-08-30T17:26:43.228Z",
+      "updatedAt": "2023-08-30T17:26:43.228Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "3",
+      "title": "Berry Mochi",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Liquid"
+      ],
+      "price": 123000,
+      "createdAt": "2023-08-30T17:51:04.770Z",
+      "updatedAt": "2023-08-30T17:51:04.770Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "4",
+      "title": "Catridge Oxva Xlim",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Catridge"
+      ],
+      "price": 33000,
+      "createdAt": "2023-09-01T06:09:11.261Z",
+      "updatedAt": "2023-09-01T06:09:11.261Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "5",
+      "title": "Catridge Argus",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Catridge"
+      ],
+      "price": 33000,
+      "createdAt": "2023-09-01T06:10:01.843Z",
+      "updatedAt": "2023-09-01T06:10:01.843Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "6",
+      "title": "Cofemel",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Liquid"
+      ],
+      "price": 120000,
+      "createdAt": "2023-09-01T06:10:31.398Z",
+      "updatedAt": "2023-09-01T06:10:31.398Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "7",
+      "title": "Foom Liquid",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Liquid"
+      ],
+      "price": 110000,
+      "createdAt": "2023-09-01T06:11:15.340Z",
+      "updatedAt": "2023-09-01T06:11:15.340Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "8",
+      "title": "Digiflavor RDA",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "RDA"
+      ],
+      "price": 330000,
+      "createdAt": "2023-09-01T06:14:53.346Z",
+      "updatedAt": "2023-09-01T06:14:53.346Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "9",
+      "title": "Druga RDA",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "RDA"
+      ],
+      "price": 300000,
+      "createdAt": "2023-09-01T06:15:31.502Z",
+      "updatedAt": "2023-09-01T06:15:31.502Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "id": "10",
+      "title": "Hotcig R233",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Mod"
+      ],
+      "price": 450000,
+      "createdAt": "2023-09-01T06:16:00.540Z",
+      "updatedAt": "2023-09-01T06:16:00.540Z",
+      "__v": 0,
+      "amount": 1
+    },
+    {
+      "amount": 1,
+      "id": "11",
+      "title": "Oxva Xlim v2",
+      "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in",
+      "categories": [
+        "Pod"
+      ],
+      "price": 149000,
+      "createdAt": "2023-09-01T06:19:38.937Z",
+      "updatedAt": "2023-09-01T06:19:38.937Z",
+      "__v": 0
+    }
+  ],
+  "order": [
+    {
+      "id": "1",
+      "userName": "xxa",
+      "address": "xxa",
+      "userId": 1,
+      "cartTotal": 490000,
+      "shipping": 500,
+      "products": [
+        {
+          "cartID": "1",
+          "productID": "1",
+          "title": "Aegis Legend",
+          "price": 490000,
+          "amount": 1
+        }
+      ],
+      "amount": 1,
+      "orderTotal": 490500
+    }
+  ],
+  "variant": [
+    {
+      "id": 1,
+      "nama": "1",
+      "stok": "1",
+      "harga": "1",
+      "sku": "1"
+    },
+    {
+      "id": 1703018459534,
+      "nama": "1",
+      "stok": "2",
+      "harga": "3",
+      "sku": "4"
+    },
+    {
+      "id": 1703018469716,
+      "nama": "a",
+      "stok": "1",
+      "harga": "1",
+      "sku": "1"
+    },
+    {
+      "id": 2,
+      "nama": "b",
+      "stok": "2",
+      "harga": "2",
+      "sku": "2"
+    },
+    {
+      "id": 3,
+      "nama": "c",
+      "stok": "3",
+      "harga": "3",
+      "sku": "3"
+    },
+    {
+      "id": 4,
+      "nama": "d",
+      "stok": "4",
+      "harga": "4",
+      "sku": "4"
+    },
+    {
+      "id": 1703018679435,
+      "nama": "",
+      "stok": "",
+      "harga": "",
+      "sku": ""
+    },
+    {
+      "id": 1703018680082,
+      "nama": "",
+      "stok": "",
+      "harga": "",
+      "sku": ""
+    },
+    {
+      "id": 1703018680672,
+      "nama": "",
+      "stok": "",
+      "harga": "",
+      "sku": ""
+    },
+    {
+      "id": 1703018681333,
+      "nama": "",
+      "stok": "",
+      "harga": "",
+      "sku": ""
+    }
+  ]
+}
