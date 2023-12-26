@@ -2,7 +2,6 @@ import { ChangeEvent } from "react";
 
 export interface CardProps {
   title: string;
-  price: number;
   img?: string;
   _id: string;
 }

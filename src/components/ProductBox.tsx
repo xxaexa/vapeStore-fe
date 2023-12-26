@@ -1,5 +1,4 @@
 import { formatPrice } from "../utils/formatPrice";
-import a from "./../assets/product/a.jpg";
 import { Link } from "react-router-dom";
 import { useDeleteProductMutation } from "../redux/api/productApi";
 import { useEffect } from "react";
@@ -26,7 +25,7 @@ const ProductBox = ({ _id, title, img, stock, price }: BoxProps) => {
 
   return (
     <div className="border-[1px] rounded-lg p-4 flex flex-row items-center justify-between size-custom">
-      <img src={a} alt={img} className="w-[150px] md:w-[200px] rounded-lg" />
+      <img src={img} alt={img} className="w-[150px] md:w-[200px] rounded-lg" />
 
       <div className=" hidden md:block">
         <h2>Name</h2>

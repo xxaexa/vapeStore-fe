@@ -1,10 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { formatPrice } from "../utils/formatPrice";
 import { CardProps } from "./types";
-import a from "./../assets/product/a.jpg";
 
-const Card = ({ title, price }: CardProps) => {
+const Card = ({ title, img }: CardProps) => {
   const navigate = useNavigate();
 
   const [isHovering, setIsHovering] = useState(false);
@@ -23,7 +21,7 @@ const Card = ({ title, price }: CardProps) => {
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
-      <img src={a} alt={title} className="rounded-lg md:h-[250px]" />
+      <img src={img} alt={title} className="rounded-lg md:h-[250px]" />
       {isHovering ? (
         <div
           className={`bg-black font-semibold text-white text-2xl w-full h-full absolute top-0 rounded-lg bg-opacity-50 flex justify-center flex-col items-center space-y-4 tracking-widest transition-all`}
