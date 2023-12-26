@@ -1,45 +1,45 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import customFetchBase from "./customFetchBase";
-import { IProductResponse, IApiResponse } from "./types";
+import { IProductResponse } from "./types";
 
 export const productApi = createApi({
   reducerPath: "productApi",
   baseQuery: customFetchBase,
   tagTypes: ["Product"],
   endpoints: (builder) => ({
-    // createPost: builder.mutation<IProductResponse, FormData>({
-    //   query(post) {
-    //     return {
-    //       url: "/posts",
-    //       method: "POST",
-    //       body: post,
-    //     };
-    //   },
-    //   invalidatesTags: [{ type: "Posts", id: "LIST" }],
-    //   transformResponse: (result: { data: { post: IProductResponse } }) =>
-    //     result.data.post,
-    // }),
-    // updatePost: builder.mutation<
-    //   IProductResponse,
-    //   { id: string; post: FormData }
-    // >({
-    //   query({ id, post }) {
-    //     return {
-    //       url: `/posts/${id}`,
-    //       method: "PATCH",
-    //       body: post,
-    //     };
-    //   },
-    //   invalidatesTags: (result, error, { id }) =>
-    //     result
-    //       ? [
-    //           { type: "Posts", id },
-    //           { type: "Posts", id: "LIST" },
-    //         ]
-    //       : [{ type: "Posts", id: "LIST" }],
-    //   transformResponse: (response: { data: { post: IProductResponse } }) =>
-    //     response.data.post,
-    // }),
+    createProduct: builder.mutation<IProductResponse, FormData>({
+      query(formData) {
+        return {
+          url: "/product/",
+          method: "POST",
+          body: formData,
+        };
+      },
+      invalidatesTags: ["Product"],
+      transformResponse: (results: IProductResponse) => results,
+    }),
+
+    updateProduct: builder.mutation<
+      IProductResponse,
+      { id: string; post: FormData }
+    >({
+      query({ id, post }) {
+        return {
+          url: `/product/${id}`,
+          method: "PATCH",
+          body: post,
+        };
+      },
+      invalidatesTags: (result, error, { id }) =>
+        result
+          ? [
+              { type: "Product", id },
+              { type: "Product", id: "LIST" },
+            ]
+          : [{ type: "Product", id: "LIST" }],
+      transformResponse: (response: { data: { post: IProductResponse } }) =>
+        response.data.post,
+    }),
     getProduct: builder.query<IProductResponse[], string | undefined>({
       query(id) {
         return {
@@ -59,31 +59,54 @@ export const productApi = createApi({
       providesTags: (result) =>
         result
           ? [
-              ...result.map(({ id }) => ({
+              ...result.map(({ _id }) => ({
                 type: "Product" as const,
-                id,
+                _id,
               })),
-              { type: "Product", id: "LIST" },
+              { type: "Product", _id: "LIST" },
             ]
-          : [{ type: "Product", id: "LIST" }],
+          : [{ type: "Product", _id: "LIST" }],
       transformResponse: (results: IProductResponse[]) => results,
     }),
-    // deletePost: builder.mutation<IProductResponse, string>({
-    //   query(id) {
-    //     return {
-    //       url: `/posts/${id}`,
-    //       method: "Delete",
-    //     };
-    //   },
-    //   invalidatesTags: [{ type: "Posts", id: "LIST" }],
-    // }),
+    filterProducts: builder.query<
+      IProductResponse[] | undefined,
+      string | undefined
+    >({
+      query(category) {
+        return {
+          url: `/product/?category=${category}`,
+        };
+      },
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ _id }) => ({
+                type: "Product" as const,
+                _id,
+              })),
+              { type: "Product", _id: "LIST" },
+            ]
+          : [{ type: "Product", _id: "LIST" }],
+      transformResponse: (results: IProductResponse[]) => results,
+    }),
+
+    deleteProduct: builder.mutation<IProductResponse, string>({
+      query(id) {
+        return {
+          url: `/product/${id}`,
+          method: "Delete",
+        };
+      },
+      invalidatesTags: ["Product"],
+    }),
   }),
 });
 
 export const {
-  // useCreatePostMutation,
-  // useDeletePostMutation,
-  // useUpdatePostMutation,
+  useCreateProductMutation,
+  useDeleteProductMutation,
+  useUpdateProductMutation,
   useGetProductsQuery,
   useGetProductQuery,
+  useFilterProductsQuery,
 } = productApi;

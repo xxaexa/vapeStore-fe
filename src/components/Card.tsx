@@ -4,7 +4,7 @@ import { formatPrice } from "../utils/formatPrice";
 import { CardProps } from "./types";
 import a from "./../assets/product/a.jpg";
 
-const Card = ({ title, price, img }: CardProps) => {
+const Card = ({ title, price }: CardProps) => {
   const navigate = useNavigate();
 
   const [isHovering, setIsHovering] = useState(false);
@@ -19,14 +19,15 @@ const Card = ({ title, price, img }: CardProps) => {
 
   return (
     <div
-      className="rounded-lg box-sizing relative ease-in-out duration-500 box-shadow tracking-widest"
+      className="rounded-lg box-sizing relative ease-in-out duration-500 box-shadow tracking-widest "
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
-      <p className="absolute top-1 right-2 text-xl">{formatPrice(price)}</p>
-      <img src={a} alt={title} />
+      <img src={a} alt={title} className="rounded-lg md:h-[250px]" />
       {isHovering ? (
-        <div className="bg-black font-semibold text-white text-2xl w-full h-full absolute top-0 rounded-lg bg-opacity-50 flex justify-center flex-col items-center space-y-4 tracking-widest">
+        <div
+          className={`bg-black font-semibold text-white text-2xl w-full h-full absolute top-0 rounded-lg bg-opacity-50 flex justify-center flex-col items-center space-y-4 tracking-widest transition-all`}
+        >
           <p className="text-center">{title}</p>
           <button onClick={() => navigate(`/product/${title}`)}>Detail</button>
         </div>

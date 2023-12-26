@@ -280,6 +280,53 @@
       "stok": "",
       "harga": "",
       "sku": ""
+    },
+    {
+      "id": 85,
+      "nama": "oetemu red",
+      "stok": "12",
+      "harga": "469000",
+      "sku": "SKU-REXRED"
+    },
+    {
+      "product_id": 85,
+      "id": 1703146511936,
+      "nama": "123",
+      "stok": "123",
+      "harga": "123",
+      "sku": "123"
+    },
+    {
+      "product_id": 85,
+      "id": 1703146519220,
+      "nama": "234",
+      "stok": "234",
+      "harga": "234",
+      "sku": "234"
+    },
+    {
+      "product_id": 85,
+      "id": 1703146540576,
+      "nama": "oetemu red",
+      "stok": "12",
+      "harga": "469000",
+      "sku": "SKU-REXRED"
+    },
+    {
+      "product_id": 85,
+      "id": 1703146549455,
+      "nama": "oetemu brown",
+      "stok": "14",
+      "harga": "479000",
+      "sku": "SKU-REXRED"
+    },
+    {
+      "product_id": 85,
+      "id": 1703146563879,
+      "nama": "oetemu blue",
+      "stok": "16",
+      "harga": "489000",
+      "sku": "SKU-REXRED"
     }
   ]
 }

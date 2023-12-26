@@ -1,32 +1,37 @@
 import { useAppSelector } from "../redux/store";
-
 import { formatPrice } from "../utils/formatPrice";
+import { CartTotalsProps } from "./types";
 
-const CartTotals = () => {
+const CartTotals = ({ isCartPage }: CartTotalsProps) => {
   const cartState = useAppSelector((state) => state.cartState);
-  // const { cartTotal, shipping, tax, orderTotal } = useSelector(
-  //   (state) => state.cart
-  // )
 
   return (
     <div className="">
       <div className="flex flex-col gap-4">
         {/* SUBTOTAL */}
-        <p className="flex justify-between text-xl">
+        <p className="flex justify-between size-custom">
           <span>Subtotal</span>
           <span className="font-medium">
             {formatPrice(cartState?.cartTotal)}
           </span>
         </p>
 
-        <p className="flex justify-between text-xl">
+        <p className="flex justify-between size-custom">
           <span>Shipping</span>
-          <span className="font-medium">
-            {formatPrice(cartState?.shipping)}
-          </span>
+          {isCartPage ? (
+            <span className="font-medium">-</span>
+          ) : (
+            <select className="px-2">
+              <option value="" selected>
+                Choose
+              </option>
+              <option value="">Express</option>
+              <option value="">Regular</option>
+            </select>
+          )}
         </p>
 
-        <p className="flex justify-between text-xl">
+        <p className="flex justify-between size-custom">
           <span>Order Total</span>
           <span className="font-medium">
             {formatPrice(cartState?.orderTotal)}

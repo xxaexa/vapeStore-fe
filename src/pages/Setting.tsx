@@ -1,9 +1,11 @@
 import { FormInput } from "../components";
 import { useState } from "react";
+import React from "react";
 // import { registerUser } from './../features/user/userSlice'
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
-const AccountSetting = () => {
+const Setting = () => {
   const dispatch = useDispatch();
   const initialState = {
     email: "",
@@ -14,19 +16,21 @@ const AccountSetting = () => {
 
   const [values, setValues] = useState(initialState);
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setValues({ ...values, [e.target.name]: value });
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const name = e.currentTarget.name;
+    const value = e.currentTarget.value;
+    setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    // e.preventDefault()
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.success("success ygy");
     // dispatch(registerUser(values))
   };
 
   return (
-    <div className="lg:ml-64 text-xl">
-      <h2 className="text-2xl uppercase font-bold border-b-2 border-purple-300">
+    <div className="lg:ml-64 text-xl pt-4">
+      <h2 className="size-custom uppercase font-bold border-b-2  pt-16 md:pt-4 border-purple-300">
         UPDATE ACCOUNT
       </h2>
       <form onSubmit={handleSubmit} className="flex mt-8 flex-col lg:w-96">
@@ -62,11 +66,11 @@ const AccountSetting = () => {
           handleChange={handleChange}
         />
 
-        <button className="px-2 py-1 rounded-lg w-24 mt-8 bg-purple-300 text-white hover:bg-white hover:text-purple-300 duration-300 ease-out hover:border-purple-300 border-2">
-          Update
+        <button className="mt-4 px-2 py-1 rounded-lg w-24 mx-auto text-lg md:text-xl bg-blue-400 hover:bg-white text-white hover:text-blue-400 border-blue-400 border-[1px] duration-300 ease-linear">
+          UPDATE
         </button>
       </form>
     </div>
   );
 };
-export default AccountSetting;
+export default Setting;

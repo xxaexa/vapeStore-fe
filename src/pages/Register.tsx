@@ -41,7 +41,6 @@ const Register = () => {
 
   return (
     <div className="bg-purple-100 min-h-screen flex justify-center items-center">
-      <Toaster />
       <div className=" box-shadow rounded-lg text-center text-xl  w-96 p-4">
         <h2 className="text-2xl my-4 font-bold mb-4">REGISTER</h2>
         <form onSubmit={handleSubmit} className="flex gap-8 flex-col">

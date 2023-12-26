@@ -40,16 +40,16 @@ const Login = () => {
   useEffect(() => {
     if (isSuccess) {
       toast.success("Login Success");
-      navigate("/account");
+      navigate("/dashboard");
     } else if (isError) {
       console.log(error);
-      toast.error(error.data.msg);
+      toast.error((error as any).data.msg);
     }
   }, [isLoading]);
 
   if (user) {
     setTimeout(() => {
-      navigate("/account");
+      navigate("/dashboard");
     }, 500);
   }
 

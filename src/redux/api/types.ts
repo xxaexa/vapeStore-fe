@@ -9,7 +9,7 @@ export interface IProductRequest {
   title: string;
   price: number;
   img: string;
-  id: string;
+  _id: string;
 }
 
 export interface ILoginProps {
@@ -32,7 +32,7 @@ export interface IUser {
 
 export interface User {
   email: string;
-  id: string;
+  _id: string;
   username: string;
 }
 
@@ -47,7 +47,7 @@ export interface IApiResponse {
 
 export interface IProductResponse {
   status: string;
-  id: string;
+  _id: string;
   title: string;
   desc: string;
   img?: string;
@@ -57,16 +57,32 @@ export interface IProductResponse {
   updated_at: string;
   __v: number;
   amount: number;
+  stock: number;
+}
+
+export interface Product extends IProductResponse {
+  status: string;
+  _id: string;
+  title: string;
+  desc: string;
+  img?: string;
+  categories: string[];
+  price: number;
+  created_at: string;
+  updated_at: string;
+  __v: number;
+  amount: number;
+  stock: number;
 }
 
 export interface IOrderResponse {
-  id: string;
+  _id: string;
   userName: string;
   address: string;
   userId: number;
   cartTotal: number;
   shipping: number;
-  products: IProductResponse[];
+  products: Product[];
   amount: number;
   orderTotal: number;
 }

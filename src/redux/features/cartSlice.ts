@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
 interface Product {
-  cartID: string | undefined;
+  cartID: string;
   productID: string;
   img: string;
   title: string;
@@ -22,7 +22,7 @@ const defaultState: CartState = {
   cartItems: [],
   numItemsInCart: 0,
   cartTotal: 0,
-  shipping: 500,
+  shipping: 0,
   orderTotal: 0,
 };
 
@@ -66,7 +66,7 @@ const cartSlice = createSlice({
         state.numItemsInCart -= product.amount;
         state.cartTotal -= product.price * product.amount;
         cartSlice.caseReducers.calculateTotals(state);
-        toast.success("Produk dihapus dari keranjang");
+        toast.success("Product delete");
       }
     },
     editItem: (

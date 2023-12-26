@@ -29,7 +29,6 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           await queryFulfilled;
-          // await dispatch(userApi.endpoints.getMe.initiate(null));
         } catch (error) {}
       },
     }),
@@ -37,38 +36,9 @@ export const authApi = createApi({
       query() {
         return {
           url: "auth/logout",
-          credentials: "include",
         };
       },
     }),
-    // verifyEmail: builder.mutation<GenericResponse, string>({
-    //   query(verificationCode) {
-    //     return {
-    //       url: `auth/verifyemail/${verificationCode}`,
-    //       credentials: "include",
-    //     };
-    //   },
-    // }),
-    // forgotPassword: builder.mutation<GenericResponse, { email: string }>({
-    //   query(body) {
-    //     return {
-    //       url: `auth/forgotpassword`,
-    //       method: "POST",
-    //       credentials: "include",
-    //       body,
-    //     };
-    //   },
-    // }),
-    // resetPassword: builder.mutation<GenericResponse, IResetPasswordRequest>({
-    //   query({ resetToken, password, passwordConfirm }) {
-    //     return {
-    //       url: `auth/resetpassword/${resetToken}`,
-    //       method: "PATCH",
-    //       body: { password, passwordConfirm },
-    //       credentials: "include",
-    //     };
-    //   },
-    // }),
   }),
 });
 
@@ -76,7 +46,4 @@ export const {
   useLoginUserMutation,
   useRegisterUserMutation,
   useLogoutUserMutation,
-  // useVerifyEmailMutation,
-  // useForgotPasswordMutation,
-  // useResetPasswordMutation,
 } = authApi;

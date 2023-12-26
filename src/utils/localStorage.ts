@@ -6,7 +6,6 @@ export interface IUser {
 }
 
 export const addUserToLocalStorage = (user: IUser) => {
-  console.log(user);
   localStorage.setItem("user", JSON.stringify(user));
 };
 

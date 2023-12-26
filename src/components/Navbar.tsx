@@ -10,9 +10,9 @@ const Navbar = () => {
 
   return (
     <nav className="bg-purple-100 text-black fixed w-full z-50 text-2xl">
-      <ul className="max-w-7xl mx-auto flex gap-2 py-6 justify-between relative">
+      <ul className="max-w-7xl mx-auto flex gap-2 py-4 md:py-6 justify-between relative pad-custom">
         <li className="cursor-pointer" onClick={() => setShow(!show)}>
-          <SearchIcon className="w-8 " />
+          <SearchIcon className="w-6 md:w-8" />
         </li>
 
         <div
@@ -36,24 +36,13 @@ const Navbar = () => {
               className="cursor-pointer relative"
               onClick={() => setShowCart(!showCart)}
             >
-              <Bag className="w-8 text-black" />
-              <div
-                className={`absolute  bg-indigo-400 ease-in-out duration-500 right-0 p-4 rounded-xl ${
-                  showCart ? "top-8" : "top-[-400px]"
-                }`}
-              >
-                <div>Notif1</div>
-                <div>Notif2</div>
-                <div>Notif3</div>
-                <div>Notif4</div>
-                <div onClick={() => setShowCart(!showCart)}>See&nbsp;All</div>
-              </div>
+              <Bag className="w-6 md:w-8 text-black" />
             </li>
           </Link>
 
-          <Link to={"/account"}>
+          <Link to={"/dashboard/order"}>
             <li className="cursor-pointer">
-              <Account className="w-8 text-black" />
+              <Account className="w-6 md:w-8 text-black" />
             </li>
           </Link>
         </li>

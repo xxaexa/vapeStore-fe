@@ -6,6 +6,9 @@ import { productApi } from "./api/productApi";
 import userReducer from "./features/userSlice";
 import cartReducer from "./features/cartSlice";
 import { orderApi } from "./api/orderApi";
+import amountReducer from "./features/amountSlice";
+import toggleReducer from "./features/toggleSlice";
+import categoryReducer from "./features/categorySlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +17,9 @@ export const store = configureStore({
     [orderApi.reducerPath]: orderApi.reducer,
     userState: userReducer,
     cartState: cartReducer,
+    amountState: amountReducer,
+    toggleState: toggleReducer,
+    categoryState: categoryReducer,
   },
   // devTools: process.env.NODE_ENV === "development",
   middleware: (getDefaultMiddleware) =>

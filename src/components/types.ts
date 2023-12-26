@@ -3,8 +3,8 @@ import { ChangeEvent } from "react";
 export interface CardProps {
   title: string;
   price: number;
-  img: string;
-  id: string;
+  img?: string;
+  _id: string;
 }
 
 export interface CategoryProps {
@@ -14,7 +14,7 @@ export interface CategoryProps {
 export interface FormInputProps {
   type: string;
   name: string;
-  value: string;
+  value: string | number | undefined;
   label?: string;
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -29,4 +29,8 @@ export interface ItemCartProps {
 export interface OrderProps {
   status: string | undefined;
   address: string | undefined;
+}
+
+export interface CartTotalsProps {
+  isCartPage: boolean;
 }

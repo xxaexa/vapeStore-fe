@@ -1,7 +1,5 @@
-import { ItemCart } from "../components";
-import CartTotals from "./../components/CartTotals";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { ItemCart, Navbar, CartTotals } from "../components";
+import { Link, useNavigate } from "react-router-dom";
 import { title } from "../utils/tittle";
 import { useAppSelector } from "../redux/store";
 import { getUserFromLocalStorage } from "../utils/localStorage";
@@ -13,7 +11,8 @@ const Cart = () => {
   title("Cart");
   const navigate = useNavigate();
   return (
-    <>
+    <div>
+      <Navbar />
       {!user ? (
         <div className="mt-24">
           <p className="text-2xl text-center">
@@ -43,26 +42,28 @@ const Cart = () => {
                 CART
               </h2>
               <div className="flex gap-12 flex-col lg:flex-row">
-                <div className=" lg:w-3/5 p-4 box-shadow ">
+                <div className="lg:w-3/5 p-4 box-shadow ">
                   {cartState?.cartItems?.map((c, index) => (
                     <ItemCart key={index} {...c} />
                   ))}
                 </div>
                 <div className="lg:w-2/5 h-[260px] p-4 box-shadow rounded-lg">
-                  <CartTotals />
-                  <button
-                    className="mt-4 w-32 text-xl text-green-400 rounded-lg border-2 border-green-400 hover:text-white hover:bg-green-400"
-                    onClick={() => navigate("/checkout")}
-                  >
-                    Checkout
-                  </button>
+                  <CartTotals isCartPage={true} />
+                  <div className="flex justify-end md:block">
+                    <button
+                      className="text-lg mt-4 w-[114px] md:w-32 size-custom text-green-400 rounded-lg border-2 border-green-400 hover:text-white hover:bg-green-400"
+                      onClick={() => navigate("/checkout")}
+                    >
+                      CHECKOUT
+                    </button>
+                  </div>
                 </div>
               </div>
             </>
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 export default Cart;
