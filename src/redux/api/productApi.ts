@@ -30,13 +30,7 @@ export const productApi = createApi({
           body: post,
         };
       },
-      invalidatesTags: (result, error, { id }) =>
-        result
-          ? [
-              { type: "Product", id },
-              { type: "Product", id: "LIST" },
-            ]
-          : [{ type: "Product", id: "LIST" }],
+      invalidatesTags: ["Product"],
       transformResponse: (response: { data: { post: IProductResponse } }) =>
         response.data.post,
     }),

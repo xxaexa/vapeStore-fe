@@ -36,11 +36,6 @@ export interface User {
   username: string;
 }
 
-interface IUserResponse {
-  user: User[];
-  accessToken: string;
-}
-
 export interface IApiResponse {
   data: IProductResponse[];
 }
