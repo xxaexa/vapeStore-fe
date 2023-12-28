@@ -1,7 +1,4 @@
-import { useParams } from "react-router-dom";
-
 const Order = () => {
-  const id = useParams();
   return (
     <div className="lg:ml-64 text-xl max-w-7xl pt-4">
       <h2 className="size-custom uppercase font-bold border-b-2 border-purple-300">

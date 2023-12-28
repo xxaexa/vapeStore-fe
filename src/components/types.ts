@@ -22,7 +22,7 @@ export interface ItemCartProps {
   cartID: string | undefined;
   img: string | undefined;
   title: string | undefined;
-  price: number | undefined;
+  price: number;
 }
 
 export interface OrderProps {

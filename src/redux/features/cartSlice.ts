@@ -57,7 +57,10 @@ const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(defaultState));
       return defaultState;
     },
-    removeItem: (state, action: PayloadAction<{ cartID: string }>) => {
+    removeItem: (
+      state,
+      action: PayloadAction<{ cartID: string | undefined }>
+    ) => {
       const { cartID } = action.payload;
       const product = state.cartItems.find((i) => i.cartID === cartID);
       console.log(cartID);

@@ -1,12 +1,9 @@
 import { FormInput } from "../components";
 import { useState } from "react";
 import React from "react";
-// import { registerUser } from './../features/user/userSlice'
-import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 const Setting = () => {
-  const dispatch = useDispatch();
   const initialState = {
     email: "",
     username: "",

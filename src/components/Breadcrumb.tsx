@@ -1,18 +1,27 @@
 import { Link, useParams, useLocation } from "react-router-dom";
+interface BreadCrumb {
+  name: string;
+}
 
-const Breadcrumb = ({ breadCrumbs }) => {
+interface BreadcrumbProps {
+  breadCrumbs: BreadCrumb[];
+}
+const Breadcrumb = ({ breadCrumbs }: BreadcrumbProps) => {
   const location = useLocation();
-  let crumbLink = ""
+  let crumbLink: JSX.Element[] = [];
+
+  crumbLink = location.pathname
     .split("/")
     .filter((path) => path !== "")
     .map((crumb, index) => {
-      crumbLink += `/${crumb}`;
+      const pathSoFar = `/${crumbLink.join("/")}`;
       return (
-        <Link to={crumbLink} key={index}>
+        <Link key={index} to={pathSoFar}>
           {crumb}
         </Link>
       );
     });
+
   const { id } = useParams();
   return (
     <div className="w-container my-4">

@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { FormInput } from "../components";
 import { useRegisterUserMutation } from "../redux/api/authApi";
-import { useDispatch } from "react-redux";
+
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { title } from "../utils/tittle";
 const Register = () => {
   title("Register");
-  const dispatch = useDispatch();
 
   const initialState = {
     email: "",
@@ -37,7 +36,7 @@ const Register = () => {
     } else if (isError) {
       console.log(error);
     }
-  }, []);
+  }, [isLoading]);
 
   return (
     <div className="bg-purple-100 min-h-screen flex justify-center items-center">

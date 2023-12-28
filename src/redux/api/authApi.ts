@@ -1,9 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { ILoginProps } from "./types";
-// import { RegisterInput } from "../../pages/register.page";
 import customFetchBase from "./customFetchBase";
 import { GenericResponse, IRegisterProps } from "./types";
-// import { userApi } from "./userApi";
 
 export const authApi = createApi({
   reducerPath: "authApi",
