@@ -16,7 +16,6 @@ const mutex = new Mutex();
 const baseQuery = fetchBaseQuery({
   baseUrl,
   prepareHeaders: (headers) => {
-    // Disertakan dalam setiap permintaan
     const user = getUserFromLocalStorage();
     if (user) {
       headers.set("Authorization", `Bearer ${user.token}`);
@@ -33,7 +32,7 @@ const customFetchBase: BaseQueryFn<
   // wait until the mutex is available without locking it
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
-  console.log(result);
+
   if ((result.error?.data as any)?.message === "You are not logged in") {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();

@@ -7,7 +7,6 @@ import { title } from "../utils/tittle";
 import { Breadcrumb, Navbar, RelatedCard } from "../components";
 
 import { formatPrice } from "../utils/formatPrice";
-import img from "./../assets/product/a.jpg";
 import { cartProduct } from "./types";
 
 const Product = () => {
@@ -41,7 +40,11 @@ const Product = () => {
           <section className="flex flex-col md:flex-row items-center mb-12">
             <div className="md:w-2/3 ">
               <Breadcrumb breadCrumbs={breadCrumbs} />
-              <img src={img} alt={img} className="md:h-[500px] rounded-lg" />
+              <img
+                src={singleProduct?.img}
+                alt={singleProduct?.img}
+                className="md:h-[500px] rounded-lg"
+              />
             </div>
             <div className="md:w-1/3 text-xl flex gap-8 flex-col">
               <h2 className="mt-5 md:mt-0 size-custom">

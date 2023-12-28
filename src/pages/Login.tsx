@@ -59,7 +59,7 @@ const Login = () => {
         <h2 className="text-2xl my-4 font-bold mb-4">LOGIN</h2>
         <form onSubmit={handleSubmit} className="flex gap-8 flex-col">
           <FormInput
-            label={"Username"}
+            label={"USERNAME"}
             type={"text"}
             name={"username"}
             value={values.username}

@@ -17,7 +17,7 @@ const Card = ({ title, img }: CardProps) => {
 
   return (
     <div
-      className="rounded-lg box-sizing relative ease-in-out duration-500 box-shadow tracking-widest "
+      className="rounded-lg box-sizing relative ease-in-out duration-500 box-shadow tracking-widest flex justify-center"
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >

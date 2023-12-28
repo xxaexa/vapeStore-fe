@@ -20,7 +20,7 @@ const Sidebar = () => {
             <Link to={"/dashboard/order"}>ORDER</Link>
           </div>
           <div className="text-2xl cursor-pointer">
-            <Link to={user.user.isAdmin ? "/dashboard/product" : "/"}>
+            <Link to={user.user?.isAdmin ? "/dashboard/product" : "/"}>
               PRODUCT
             </Link>
           </div>
