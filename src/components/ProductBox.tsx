@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { useDeleteProductMutation } from "../redux/api/productApi";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import deleteIcon from "./../assets/icons/delete.svg";
-import edit from "./../assets/icons/edit.svg";
+import { TbEdit, TbTrash } from "react-icons/tb";
 
 export interface BoxProps {
   title: string;
@@ -26,7 +25,6 @@ const ProductBox = ({ _id, title, img, stock, price }: BoxProps) => {
   return (
     <div className="border-[1px] rounded-lg p-4 flex flex-row items-center justify-between size-custom">
       <img src={img} alt={img} className="w-[150px] md:w-[200px] rounded-lg" />
-
       <div className=" hidden md:block">
         <h2>Name</h2>
         <h2>{title}</h2>
@@ -39,20 +37,28 @@ const ProductBox = ({ _id, title, img, stock, price }: BoxProps) => {
         <h2>Stock</h2>
         <h2>{stock}</h2>
       </div>
-      <div className="flex gap-2">
+      <div className="hidden md:flex gap-2">
         <Link to={`edit/${title}`}>
-          <img src={edit} className="w-5" />
+          <TbEdit className="w-7 h-7" />
         </Link>
         <button onClick={() => deleteProduct(_id)}>
-          <img src={deleteIcon} className="w-5" />
+          <TbTrash className="w-7 h-7" />
         </button>
       </div>
-      <div className="block md:hidden text-right text-sm">
+      <div className=" md:hidden text-right text-sm flex flex-col space-y-2">
         <h2>
           Name : <span className="line-2 ">{title}</span>
         </h2>
         <h2>Price : {formatPrice(price)}</h2>
         <p> Stock : {stock}</p>
+        <div className="flex flex-row gap-4 justify-end">
+          <Link to={`edit/${title}`}>
+            <TbEdit className="w-5 h-5" />
+          </Link>
+          <button onClick={() => deleteProduct(_id)}>
+            <TbTrash className="w-5 h-5" />
+          </button>
+        </div>
       </div>
     </div>
   );

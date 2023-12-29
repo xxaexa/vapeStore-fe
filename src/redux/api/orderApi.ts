@@ -17,7 +17,7 @@ export const orderApi = createApi({
         };
       },
     }),
-    getOrders: builder.query<IOrderResponse[], string | undefined>({
+    getOrdersUser: builder.query<IOrderResponse[], string | undefined>({
       query(id) {
         return {
           url: `/order/${id}`,
@@ -35,7 +35,7 @@ export const orderApi = createApi({
           : [{ type: "Order", _id: "LIST" }],
       transformResponse: (results: IOrderResponse[]) => results,
     }),
-    getOrder: builder.query<IOrderResponse[], void>({
+    getOrders: builder.query<IOrderResponse[], void>({
       query() {
         return {
           url: `/order/`,
@@ -56,5 +56,8 @@ export const orderApi = createApi({
   }),
 });
 
-export const { useCreateOrderMutation, useGetOrdersQuery, useGetOrderQuery } =
-  orderApi;
+export const {
+  useCreateOrderMutation,
+  useGetOrdersQuery,
+  useGetOrdersUserQuery,
+} = orderApi;

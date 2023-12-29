@@ -1,10 +1,12 @@
 import { FormInput, CategoryInput } from "../../components";
 import { useEffect, useState } from "react";
-import arrow from "./../../assets/icons/arrow-left.svg";
+
 import { useNavigate } from "react-router-dom";
 import { useCreateProductMutation } from "../../redux/api/productApi";
 import { toast } from "react-toastify";
-import addImg from "../../assets/icons/image.svg";
+
+import { FaArrowLeft } from "react-icons/fa6";
+import { BiImageAdd } from "react-icons/bi";
 
 const Add = () => {
   const navigate = useNavigate();
@@ -68,15 +70,15 @@ const Add = () => {
 
   return (
     <div className="lg:ml-64 text-xl max-w-7xl  pt-16 md:pt-4">
-      <div className="flex  gap-4">
+      <div className="flex border-b-2 border-purple-300 pt-4 items-center gap-2">
         <button onClick={() => navigate(-1)}>
-          <img src={arrow} alt="" />
+          <FaArrowLeft />
         </button>
         <h2 className="size-custom uppercase font-bold ">ADD PRODUCT</h2>
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-4">
           <FormInput
             label={"NAME"}
             type={"text"}
@@ -91,7 +93,7 @@ const Add = () => {
               name="desc"
               value={textareaValue}
               onChange={handleChangeText}
-              className="w-full h-40 p-2 border  rounded-lg resize-none outline-none focus:border-blue-500"
+              className="w-full h-40 p-2 border  rounded-lg resize-none outline-none border-purple-900 focus:border-purple-500"
             />
           </div>
 
@@ -106,17 +108,25 @@ const Add = () => {
             />
 
             {previewImage ? (
-              <img
-                src={previewImage}
-                alt="Preview"
-                className="max-w-full h-[150px] my-4 rounded-lg"
-              />
+              <div className="relative">
+                <button
+                  className="absolute right-[-18px] rounded-full bg-red-400 p-1 px-3"
+                  onClick={() => setPreviewImage(null)}
+                >
+                  X
+                </button>
+                <img
+                  src={previewImage}
+                  alt="Preview"
+                  className="max-w-full h-full my-4 rounded-lg"
+                />
+              </div>
             ) : (
               <label
                 htmlFor="imageInput"
-                className="cursor-pointer rounded-lg px-2 text-lg md:text-xl"
+                className="cursor-pointer rounded-lg px-2 flex items-center justify-center h-full"
               >
-                <img src={addImg} alt="" className="w-[150px]" />
+                <BiImageAdd className="w-[100px] h-[100px]" />
               </label>
             )}
           </div>
@@ -136,7 +146,7 @@ const Add = () => {
           />
         </div>
         <br />
-        <button className="mt-4 px-2 py-1 rounded-lg w-24 mx-auto text-lg md:text-xl bg-blue-400 hover:bg-white text-white hover:text-blue-400 border-blue-400 border-[1px] duration-300 ease-linear">
+        <button className="mt-4 px-2 py-1 rounded-lg w-24  text-lg md:text-xl bg-purple-600 hover:bg-white text-white hover:text-purple-600  border-purple-600 border-[1px] duration-300 ease-linear mx-auto">
           SUBMIT
         </button>
       </form>

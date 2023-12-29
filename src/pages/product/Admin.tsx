@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import { useGetProductsQuery } from "../../redux/api/productApi";
 import { Loading, ProductBox } from "../../components";
-
+import { ImPlus } from "react-icons/im";
 const Admin = () => {
   const { data: products = [], isLoading } = useGetProductsQuery();
+
   return (
-    <div className="lg:ml-64 text-xl max-w-7xl  pt-16 md:pt-4">
-      <div className="flex justify-between border-b-2 border-purple-300">
+    <div className="lg:ml-64 text-xl max-w-7xl pt-16 md:pt-4">
+      <div className="flex justify-between border-b-2 border-purple-300 pt-4">
         <h2 className="size-custom uppercase font-bold ">PRODUCT LIST</h2>
         <Link to={"add"}>
-          <button className="size-custom ">ADD PRODUCT</button>
+          <button className="size-custom flex gap-2 items-center">
+            <ImPlus /> ADD PRODUCT
+          </button>
         </Link>
       </div>
 

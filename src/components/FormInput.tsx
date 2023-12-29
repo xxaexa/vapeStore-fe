@@ -16,7 +16,7 @@ const FormInput = ({
         type={type}
         name={name}
         value={value}
-        className="border-[1px] rounded-lg mt-2 px-2 outline-none focus:border-blue-500"
+        className="border-[1px] border-purple-500 rounded-lg mt-2 px-2 outline-none focus:border-purple-900"
         onChange={handleChange}
       />
     </div>

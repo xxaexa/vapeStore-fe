@@ -1,25 +1,36 @@
 import { title } from "../utils/tittle";
 import { Sidebar } from "../components";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { toggleSidebar } from "../redux/features/toggleSlice";
 import { useDispatch } from "react-redux";
-import menu from "./../assets/icons/bars.svg";
+import { ImMenu, ImHome } from "react-icons/im";
 
 const Account = () => {
   title("Account");
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   return (
     <div>
-      <div className="md:hidden fixed  flex justify-between bg-indigo-300 text-white px-8 py-2  w-full">
-        <h2 className="text-xl md:text-2xl">Vape-Store</h2>
-        <button className="text-2xl" onClick={() => dispatch(toggleSidebar())}>
-          <img src={menu} alt="menu" className="w-8 text-white" />
-        </button>
-      </div>
-      <section className="w-10/12 lg:w-8/12 mx-auto">
-        <Sidebar />
+      <div className="bg-purple-100 text-black fixed w-full z-50 text-2xl">
+        <div className="max-w-7xl mx-auto flex gap-2 py-4 md:py-6 justify-between relative pad-custom">
+          <h2 className="text-xl md:text-2xl">VAPE-STORE</h2>
+          <div className="flex gap-4">
+            <button className="text-2xl" onClick={() => navigate("/")}>
+              <ImHome />
+            </button>
 
+            <button
+              className="text-2xl"
+              onClick={() => dispatch(toggleSidebar())}
+            >
+              <ImMenu />
+            </button>
+          </div>
+        </div>
+      </div>
+      <section className="max-w-7xl mx-auto md:pt-[82px] pad-custom">
+        <Sidebar />
         <Outlet />
       </section>
     </div>

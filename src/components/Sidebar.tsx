@@ -14,7 +14,7 @@ const Sidebar = () => {
     <div>
       <div className="hidden md:block">
         <div
-          className={`lg:w-52 w-full fixed flex flex-col gap-2 h-screen bg-indigo-400 bg-opacity-40 p-4 `}
+          className={`lg:w-52 w-full fixed flex flex-col gap-2 h-screen bg-purple-100 p-4 `}
         >
           <div className="text-2xl cursor-pointer">
             <Link to={"/dashboard/order"}>ORDER</Link>
@@ -41,8 +41,8 @@ const Sidebar = () => {
       </div>
       <div className="md:hidden">
         <div
-          className={`w-full absolute flex flex-col gap-2 h-screen bg-indigo-300 text-white duration-500 transition-all ease-linear px-8 mt-12 ${
-            sidebar ? "right-0" : "right-[422px]"
+          className={`w-full absolute flex flex-col gap-2 h-screen bg-purple-100 text-black duration-500 transition-all ease-linear px-8 mt-14 ${
+            sidebar ? "right-0" : "right-[922px]"
           }`}
         >
           <div className="text-lg cursor-pointer">

@@ -13,7 +13,7 @@ export interface IProductRequest {
 }
 
 export interface ILoginProps {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -80,4 +80,5 @@ export interface IOrderResponse {
   products: Product[];
   amount: number;
   orderTotal: number;
+  status: string;
 }

@@ -19,7 +19,7 @@ const Login = () => {
     useLoginUserMutation();
 
   const initialState = {
-    username: "",
+    email: "",
     password: "",
   };
 
@@ -59,10 +59,10 @@ const Login = () => {
         <h2 className="text-2xl my-4 font-bold mb-4">LOGIN</h2>
         <form onSubmit={handleSubmit} className="flex gap-8 flex-col">
           <FormInput
-            label={"USERNAME"}
-            type={"text"}
-            name={"username"}
-            value={values.username}
+            label={"EMAIL"}
+            type={"email"}
+            name={"email"}
+            value={values.email}
             handleChange={handleChange}
           />
 

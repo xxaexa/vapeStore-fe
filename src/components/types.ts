@@ -30,6 +30,12 @@ export interface OrderProps {
   address: string | undefined;
 }
 
+export interface OrderBoxProps {
+  index: number;
+  status: string;
+  orderTotal: number;
+}
+
 export interface CartTotalsProps {
   isCartPage: boolean;
 }

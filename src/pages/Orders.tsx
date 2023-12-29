@@ -1,6 +1,6 @@
 import { getUserFromLocalStorage } from "../utils/localStorage";
-import Admin from "./order/Admin";
-import Member from "./order/Member";
+import Admin from "./orders/Admin";
+import Member from "./orders/Member";
 
 const Orders = () => {
   const user = getUserFromLocalStorage();

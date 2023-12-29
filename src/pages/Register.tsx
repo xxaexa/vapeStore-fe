@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { FormInput } from "../components";
 import { useRegisterUserMutation } from "../redux/api/authApi";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { title } from "../utils/tittle";
 const Register = () => {
   title("Register");
-
+  const navigate = useNavigate();
   const initialState = {
     email: "",
     username: "",
@@ -24,16 +24,18 @@ const Register = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(values);
-    await registerUser(values);
+    registerUser(values);
   };
 
   useEffect(() => {
     if (isSuccess) {
       toast.success("register success");
+      navigate("/login");
     } else if (isError) {
+      toast.error("Email / Username is already exist");
       console.log(error);
     }
   }, [isLoading]);
