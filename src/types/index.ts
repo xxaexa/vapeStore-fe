@@ -42,20 +42,6 @@ export interface cartProduct {
   amount: number;
 }
 
-export interface Product {
-  cartID: string | undefined;
-  productID: string;
-  img?: string;
-  title: string;
-  price: number;
-  amount: number;
-}
-
-export interface HeaderDashboardProps {
-  text: string;
-  product?: boolean;
-}
-
 export interface NavbarProps {
   isSidebar: boolean;
 }
@@ -64,6 +50,15 @@ export interface TextProps {
   text?: string | number | undefined;
   style?: string;
 }
+
+export interface ProductState {
+  cartID: string | undefined;
+  productID: string;
+  img?: string;
+  title: string;
+  price: number;
+  amount: number;
+}
 export interface CheckoutState {
   _id: string;
   userName: string;
@@ -71,9 +66,14 @@ export interface CheckoutState {
   userId: number;
   cartTotal?: number | null;
   shipping?: number | null;
-  products?: Product | Product;
+  products?: ProductState[] | null | undefined;
   amount?: number | null;
   orderTotal?: number | null;
+}
+
+export interface HeaderDashboardProps {
+  text: string;
+  product?: boolean;
 }
 
 export interface GenericResponse {
