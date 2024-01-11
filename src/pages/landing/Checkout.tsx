@@ -55,7 +55,7 @@ const Checkout = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar isSidebar={false} />
       <div className="w-10/12 lg:w-8/12 mx-auto pt-24">
         <form onSubmit={handleSubmit}>
           <h4 className="text-2xl mt-8 uppercase font-bold border-b-2 border-purple-300">

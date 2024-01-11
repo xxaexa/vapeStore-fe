@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import customFetchBase from "./customFetchBase";
-import { IProductResponse } from "./types";
+import { IProductResponse } from "../../types";
 
 export const productApi = createApi({
   reducerPath: "productApi",

@@ -71,7 +71,7 @@ export interface CheckoutState {
   userId: number;
   cartTotal?: number | null;
   shipping?: number | null;
-  products?: Product[] | Product; // Sesuaikan dengan tipe yang benar, misalnya IProduct[]
+  products?: Product | Product;
   amount?: number | null;
   orderTotal?: number | null;
 }
