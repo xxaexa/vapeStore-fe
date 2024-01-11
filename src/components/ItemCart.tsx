@@ -4,6 +4,7 @@ import { formatPrice } from "../utils/";
 import { removeItem } from "../redux/features/cartSlice";
 import { ItemCartProps } from "../types";
 import { AiOutlineDelete } from "react-icons/ai";
+import RegularText from "./text/RegularText";
 const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
   const [amount, setAmount] = useState(1);
   const dispatch = useDispatch();
@@ -27,12 +28,12 @@ const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
       <div className="flex flex-col lg:text-right justify-between ">
         <div className="sm:ml-16 sm:w-48">
           {/* TITLE */}
-          <h3 className="capitalize font-medium text-right">{title}</h3>
+          <RegularText text={title} style="text-right" />
         </div>
         {/* AMOUNT */}
         <div className="text-right">
           <label htmlFor="amount" className="label p-0">
-            <div className="flex justify-end">
+            <div className="flex items-center justify-end">
               <button
                 className="w-8 h-8"
                 onClick={() => {
@@ -43,24 +44,25 @@ const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
                   }
                 }}
               >
-                -
+                <RegularText text={"-"} style="text-center" />
               </button>
-              <h1 className="w-8 h-8 text-center">{amount}</h1>
+
+              <RegularText text={amount} style="text-xl" />
+
               <button className="w-8 h-8" onClick={() => setAmount(amount + 1)}>
-                +
+                <RegularText text={"+"} style="text-center" />
               </button>
             </div>
           </label>
 
           <br />
         </div>
-        <p className="font-medium sm:ml-auto text-right">
-          {formatPrice(price * amount)}
-        </p>
+
+        <RegularText text={formatPrice(price * amount)} />
         <div className="flex justify-end">
           {/* REMOVE */}
           <button
-            className="text-2xl rounded-lg text-left"
+            className="text-xl rounded-lg text-left"
             onClick={handleRemove}
           >
             <AiOutlineDelete />

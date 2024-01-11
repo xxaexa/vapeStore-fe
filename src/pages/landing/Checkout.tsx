@@ -8,6 +8,7 @@ import { useCreateOrderMutation } from "../../redux/api/orderApi";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../../redux/features/cartSlice";
 import { CheckoutState } from "../../types";
+import LargeText from "../../components/text/LargeText";
 
 const Checkout = () => {
   createTitlePage("Checkout");
@@ -56,15 +57,17 @@ const Checkout = () => {
   return (
     <div>
       <Navbar isSidebar={false} />
-      <div className="w-10/12 lg:w-8/12 mx-auto pt-24">
+      <div className="px-4 md:px-0 max-w-7xl mx-auto pt-[46px] md:pt-[66px]">
         <form onSubmit={handleSubmit}>
-          <h4 className="text-2xl mt-8 uppercase font-bold border-b-2 border-purple-300">
-            CHECKOUT
-          </h4>
+          <LargeText
+            text={"CHECKOUT"}
+            style="font-semibold mb-2 border-b-[1px] border-black"
+          />
+
           <div className="mt-6 grid gap-8 md:grid-cols-2 items-start">
             <div className="box-shadow p-4">
               <Input
-                label="name"
+                label="Name"
                 name="userName"
                 type="text"
                 value={values.userName}
@@ -74,7 +77,7 @@ const Checkout = () => {
               />
 
               <Input
-                label="address"
+                label="Address"
                 name="address"
                 type="text"
                 value={values.address}

@@ -9,6 +9,9 @@ import { formatPrice, createTitlePage } from "../../utils/";
 import { cartProduct } from "../../types";
 import { getUserFromLocalStorage } from "../../utils/";
 
+import RegularText from "../../components/text/RegularText";
+import LargeText from "../../components/text/LargeText";
+
 const Product = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -34,7 +37,7 @@ const Product = () => {
   return (
     <div>
       <Navbar isSidebar={false} />
-      <div className="w-10/12 lg:w-8/12 mx-auto pt-16 md:pt-24">
+      <div className="px-4 md:px-0 max-w-7xl mx-auto pt-8 md:pt-24">
         {isLoading ? (
           <div className="flex justify-center mt-8">{/* <Loading /> */}</div>
         ) : (
@@ -48,16 +51,12 @@ const Product = () => {
               />
             </div>
             <div className="md:w-1/3 text-xl flex gap-8 flex-col">
-              <h2 className="mt-5 md:mt-0 size-custom">
-                {singleProduct?.title}
-              </h2>
-              <p className="text-md md:text-2xl">
-                {formatPrice(singleProduct?.price)}
-              </p>
-              <p className="size-custom">{singleProduct?.desc}</p>
-              <div className="flex flex-col gap-2">
+              <LargeText text={singleProduct?.title} />
+              <RegularText text={formatPrice(singleProduct?.price)} />
+              <RegularText text={singleProduct?.desc} />
+              <div className="hidden md:flex flex-col gap-2">
                 <button
-                  className="mt-4 text-lg md:text-2xl bg-purple-400 px-4 py-1 rounded-lg text-white hover:bg-purple-300"
+                  className="mt-4 bg-purple-400 px-4  rounded-lg text-white hover:bg-purple-300"
                   onClick={() => {
                     if (!user) {
                       return navigate("/cart");
@@ -67,7 +66,7 @@ const Product = () => {
                     }
                   }}
                 >
-                  ADD TO CART
+                  <LargeText text={"ADD TO CART"} />
                 </button>
               </div>
             </div>
@@ -75,6 +74,19 @@ const Product = () => {
         )}
         <RelatedCard />
       </div>
+      <button
+        className="fixed md:hidden bg-purple-400 rounded-t-lg py-2 text-white hover:bg-purple-300 bottom-0 w-full"
+        onClick={() => {
+          if (!user) {
+            return navigate("/cart");
+          } else {
+            dispatch(addItem({ product: cartProduct }));
+            navigate("/cart");
+          }
+        }}
+      >
+        <LargeText text={"ADD TO CART"} />
+      </button>
     </div>
   );
 };

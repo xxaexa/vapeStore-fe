@@ -21,7 +21,7 @@ const Products = () => {
   return (
     <div>
       <Navbar isSidebar={false} />
-      <div className="max-w-7xl mx-auto pt-[32px] md:pt-[46px]">
+      <div className="px-4 md:px-0 max-w-7xl mx-auto pt-[32px] md:pt-[46px]">
         <div>
           <Category />
         </div>

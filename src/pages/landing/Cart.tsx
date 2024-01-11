@@ -5,6 +5,8 @@ import { useAppSelector } from "../../redux/store";
 import { toggleFalse } from "./../../redux/features/toggleSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import LargeText from "../../components/text/LargeText";
+import RegularText from "../../components/text/RegularText";
 
 const Cart = () => {
   createTitlePage("Cart");
@@ -18,7 +20,7 @@ const Cart = () => {
   }, []);
 
   return (
-    <div>
+    <div className="">
       <Navbar isSidebar={false} />
       {!user ? (
         <div className="mt-24">
@@ -33,21 +35,23 @@ const Cart = () => {
           </button>
         </div>
       ) : (
-        <div className="w-10/12 lg:w-8/12 mx-auto pt-4">
+        <div className="px-4 md:px-0 max-w-7xl mx-auto pt-[46px] md:pt-[66px]">
           {cartState?.cartItems?.length === 0 ? (
             <div className="mt-24">
-              <p className="text-center text-2xl uppercase">cart is empty</p>
+              <RegularText text={"cart is empty"} />
               <Link to={"/"}>
-                <button className="mt-12 mx-auto block text-2xl uppercase bg-purple-300 px-4 py-1 rounded-lg hover:text-white duration-300 ease-out">
-                  Add Some Product
+                <button className="mt-12 mx-auto blockuppercase bg-purple-300 px-4 py-1 rounded-lg hover:text-white duration-300 ease-out">
+                  <RegularText text={" Add Some Product"} />
                 </button>
               </Link>
             </div>
           ) : (
             <>
-              <h2 className="text-2xl font-semibold mb-12 border-b-2 border-black">
-                CART
-              </h2>
+              <LargeText
+                text={"CART"}
+                style="font-semibold mb-4 border-b-[1px] border-black"
+              />
+
               <div className="flex gap-12 flex-col lg:flex-row">
                 <div className="lg:w-3/5 p-4 box-shadow ">
                   {cartState?.cartItems?.map((c, index) => (
@@ -61,7 +65,7 @@ const Cart = () => {
                       className="text-lg mt-4 w-[114px] md:w-32 size-custom text-green-400 rounded-lg border-2 border-green-400 hover:text-white hover:bg-green-400"
                       onClick={() => navigate("/checkout")}
                     >
-                      CHECKOUT
+                      <RegularText text={"Checkout"} />
                     </button>
                   </div>
                 </div>
