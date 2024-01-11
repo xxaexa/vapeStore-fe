@@ -1,5 +1,5 @@
 import moment from "moment";
-import { OrderProps } from "./types";
+import { OrderProps } from "../types";
 
 const Order = ({ status, address }: OrderProps) => {
   return (
