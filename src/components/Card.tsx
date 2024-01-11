@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { CardProps } from "./types";
+import { CardProps } from "../types";
+import RegularText from "./text/RegularText";
 
 const Card = ({ title, img }: CardProps) => {
   const navigate = useNavigate();
@@ -21,13 +22,16 @@ const Card = ({ title, img }: CardProps) => {
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
-      <img src={img} alt={title} className="rounded-lg md:h-[250px]" />
+      <img src={img} alt={title} className="rounded-lg " />
       {isHovering ? (
         <div
           className={`bg-black font-semibold text-white text-2xl w-full h-full absolute top-0 rounded-lg bg-opacity-50 flex justify-center flex-col items-center space-y-4 tracking-widest transition-all`}
         >
-          <p className="text-center">{title}</p>
-          <button onClick={() => navigate(`/product/${title}`)}>Detail</button>
+          <RegularText text={title} />
+
+          <button onClick={() => navigate(`/product/${title}`)}>
+            <RegularText text={"Detail"} style="tracking-widest" />
+          </button>
         </div>
       ) : null}
     </div>

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../api/types";
+import { IUser } from "../../types";
 import {
   addUserToLocalStorage,
   removeUserFromLocalStorage,
-} from "../../utils/localStorage";
+} from "../../utils/";
 
 interface IUserState {
   user: IUser | null;

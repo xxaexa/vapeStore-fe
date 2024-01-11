@@ -1,20 +1,22 @@
 import { Routes, Route } from "react-router-dom";
 import {
-  Account,
-  Order,
-  Orders,
-  Setting,
+  Home,
+  Products,
+  Login,
+  Register,
+  Product,
   Cart,
   Checkout,
-  Login,
-  Product,
-  Products,
-  Home,
-  Register,
+  Layout,
   Dashboard,
   ProductAdmin,
-  ProductAdd,
-  ProductEdit,
+  AddProductAdmin,
+  EditProductAdmin,
+  SettingLayout,
+  OrderAdmin,
+  EditOrderAdmin,
+  SettingThemeAdmin,
+  SettingAccountAdmin,
 } from "./pages";
 import { ProtectedRoute } from "./components";
 
@@ -30,7 +32,7 @@ const App = () => {
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <Account />
+              <Layout />
             </ProtectedRoute>
           }
         >
@@ -54,7 +56,7 @@ const App = () => {
             path="product/add"
             element={
               <ProtectedRoute>
-                <ProductAdd />
+                <AddProductAdmin />
               </ProtectedRoute>
             }
           />
@@ -62,7 +64,7 @@ const App = () => {
             path="product/edit/:id"
             element={
               <ProtectedRoute>
-                <ProductEdit />
+                <EditProductAdmin />
               </ProtectedRoute>
             }
           />
@@ -70,15 +72,32 @@ const App = () => {
             path="setting"
             element={
               <ProtectedRoute>
-                <Setting />
+                <SettingLayout />
               </ProtectedRoute>
             }
-          />
+          >
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <SettingAccountAdmin />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="theme"
+              element={
+                <ProtectedRoute>
+                  <SettingThemeAdmin />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
           <Route
             path="order"
             element={
               <ProtectedRoute>
-                <Orders />
+                <OrderAdmin />
               </ProtectedRoute>
             }
           />
@@ -86,7 +105,7 @@ const App = () => {
             path="order/:id"
             element={
               <ProtectedRoute>
-                <Order />
+                <EditOrderAdmin />
               </ProtectedRoute>
             }
           />

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { formatPrice } from "../utils/formatPrice";
+import { formatPrice } from "../utils/";
 import { removeItem } from "../redux/features/cartSlice";
-import { ItemCartProps } from "./types";
-
+import { ItemCartProps } from "../types";
+import { AiOutlineDelete } from "react-icons/ai";
 const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
   const [amount, setAmount] = useState(1);
   const dispatch = useDispatch();
@@ -32,7 +32,6 @@ const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
         {/* AMOUNT */}
         <div className="text-right">
           <label htmlFor="amount" className="label p-0">
-            <span className="label-text">Amount</span>
             <div className="flex justify-end">
               <button
                 className="w-8 h-8"
@@ -46,10 +45,10 @@ const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
               >
                 -
               </button>
+              <h1 className="w-8 h-8 text-center">{amount}</h1>
               <button className="w-8 h-8" onClick={() => setAmount(amount + 1)}>
                 +
               </button>
-              <h1 className="w-8 h-8 text-center">{amount}</h1>
             </div>
           </label>
 
@@ -61,10 +60,10 @@ const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
         <div className="flex justify-end">
           {/* REMOVE */}
           <button
-            className="mt-4 md:mt-0 w-24 md:w-32 size-custom text-red-400 rounded-lg border-2 border-red-400 hover:text-white hover:bg-red-400"
+            className="text-2xl rounded-lg text-left"
             onClick={handleRemove}
           >
-            REMOVE
+            <AiOutlineDelete />
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useAppSelector } from "../redux/store";
-import { formatPrice } from "../utils/formatPrice";
-import { CartTotalsProps } from "./types";
+import { formatPrice } from "../utils/";
+import { CartTotalsProps } from "../types";
 
 const CartTotals = ({ isCartPage }: CartTotalsProps) => {
   const cartState = useAppSelector((state) => state.cartState);

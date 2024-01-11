@@ -6,7 +6,7 @@ import {
 } from "@reduxjs/toolkit/query";
 import { Mutex } from "async-mutex";
 import { logout } from "../features/userSlice";
-import { getUserFromLocalStorage } from "../../utils/localStorage";
+import { getUserFromLocalStorage } from "../../utils";
 
 const baseUrl = import.meta.env.VITE_BACKEND_API;
 

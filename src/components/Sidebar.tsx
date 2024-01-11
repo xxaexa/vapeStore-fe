@@ -1,70 +1,75 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/features/userSlice";
 import { useDispatch } from "react-redux";
-import { useAppSelector } from "../redux/store";
-import { getUserFromLocalStorage } from "../utils/localStorage";
+import { getUserFromLocalStorage } from "../utils/";
+import { PiPackageThin } from "react-icons/pi";
+import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
+import { CiViewTable } from "react-icons/ci";
+import LargeText from "./text/LargeText";
+import IconText from "./text/IconText";
+import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const { id } = useParams();
   const user = getUserFromLocalStorage();
-  const sidebar = useAppSelector((state) => state.toggleState.sidebar);
 
   return (
     <div>
       <div className="hidden md:block">
         <div
-          className={`lg:w-52 w-full fixed flex flex-col gap-2 h-screen bg-purple-100 p-4 `}
+          className={`lg:w-52 w-full fixed flex flex-col gap-2 h-screen bg-purple-100 py-4 pl-4`}
         >
-          <div className="text-2xl cursor-pointer">
-            <Link to={"/dashboard/order"}>ORDER</Link>
+          <div
+            className={`sidebar-text duration-500 ease-in-out ${
+              location.pathname === "/dashboard/order"
+                ? "bg-white px-4 rounded-l-lg"
+                : "bg-purple-100"
+            }`}
+            onClick={() => navigate("/dashboard/order")}
+          >
+            <IconText icon={<CiViewTable />} />
+            <LargeText text={"Order"} />
           </div>
-          <div className="text-2xl cursor-pointer">
-            <Link to={user.user?.isAdmin ? "/dashboard/product" : "/"}>
-              PRODUCT
-            </Link>
+          <div
+            className={`sidebar-text duration-500 ease-in-out ${
+              location.pathname === "/dashboard/product" ||
+              location.pathname === "/dashboard/product/add" ||
+              location.pathname === `/dashboard/product/edit/${id}`
+                ? "bg-white px-4 rounded-l-lg"
+                : "bg-purple-100"
+            }`}
+            onClick={() =>
+              navigate(`${user.user?.isAdmin ? "/dashboard/product" : "/"}`)
+            }
+          >
+            <IconText icon={<PiPackageThin />} />
+            <LargeText text={"Product"} />
           </div>
-          <div className="text-2xl cursor-pointer ">
-            <Link to={"/dashboard/setting"}>SETTING</Link>
+          <div
+            className={`sidebar-text duration-500 ease-in-out ${
+              location.pathname === "/dashboard/setting" ||
+              location.pathname === "/dashboard/setting/theme"
+                ? "bg-white px-4 rounded-l-lg"
+                : "bg-purple-100"
+            }`}
+            onClick={() => navigate("/dashboard/setting")}
+          >
+            <IconText icon={<IoSettingsOutline />} />
+            <LargeText text={"Setting"} />
           </div>
-          <div className="text-2xl cursor-pointer">
-            <button
-              onClick={() => {
-                dispatch(logout());
-                navigate("/login");
-              }}
-            >
-              LOGOUT
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="md:hidden">
-        <div
-          className={`w-full absolute flex flex-col gap-2 h-screen bg-purple-100 text-black duration-500 transition-all ease-linear px-8 mt-14 ${
-            sidebar ? "right-0" : "right-[922px]"
-          }`}
-        >
-          <div className="text-lg cursor-pointer">
-            <Link to={"/dashboard/order"}>ORDER</Link>
-          </div>
-          <div className="text-lg cursor-pointer">
-            <Link to={user.user.isAdmin ? "/dashboard/product" : "/"}>
-              PRODUCT
-            </Link>
-          </div>
-          <div className="text-lg cursor-pointer ">
-            <Link to={"/dashboard/setting"}>SETTING</Link>
-          </div>
-          <div className="text-lg cursor-pointer">
-            <button
-              onClick={() => {
-                dispatch(logout());
-                navigate("/login");
-              }}
-            >
-              LOGOUT
-            </button>
+          <div
+            className="sidebar-text"
+            onClick={() => {
+              dispatch(logout());
+              navigate("/login");
+            }}
+          >
+            <IconText icon={<IoLogOutOutline />} />
+            <LargeText text={"Logout"} />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { getUserFromLocalStorage } from "../utils/localStorage";
+import { getUserFromLocalStorage } from "../utils/";
 import { ReactNode } from "react";
 
 interface ProtectedRouteProps {

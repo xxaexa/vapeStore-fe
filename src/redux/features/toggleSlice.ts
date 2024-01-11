@@ -15,9 +15,12 @@ export const toggleSlice = createSlice({
     toggleSidebar: (state) => {
       state.sidebar = !state.sidebar;
     },
+    toggleFalse: (state) => {
+      state.sidebar = false;
+    },
   },
 });
 
 export default toggleSlice.reducer;
 
-export const { toggleSidebar } = toggleSlice.actions;
+export const { toggleSidebar, toggleFalse } = toggleSlice.actions;

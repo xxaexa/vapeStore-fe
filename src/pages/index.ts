@@ -1,33 +1,37 @@
-import Login from "./Login";
-import Product from "./Product";
-import Products from "./Products";
-import Account from "./Account";
-import Setting from "./Setting";
-import Cart from "./Cart";
-import Checkout from "./Checkout";
-import Home from "./Home";
-import Register from "./Register";
-import Dashboard from "./Dashboard";
-import Order from "./Order";
-import Orders from "./Orders";
-import ProductAdmin from "./product/Admin";
-import ProductAdd from "./product/Add";
-import ProductEdit from "./product/Edit";
+import Home from "./landing/Home";
+import Products from "./landing/Products";
+import Product from "./landing/Product";
+import Login from "./landing/Login";
+import Register from "./landing/Register";
+import Cart from "./landing/Cart";
+import Checkout from "./landing/Checkout";
+import Layout from "./dashboard/Layout";
+import Dashboard from "./dashboard/Dashboard";
+import ProductAdmin from "./dashboard/admin/product/index";
+import AddProductAdmin from "./dashboard/admin/product/Add";
+import EditProductAdmin from "./dashboard/admin/product/Edit";
+import SettingLayout from "./dashboard/admin/setting/index";
+import OrderAdmin from "./dashboard/admin/order/";
+import EditOrderAdmin from "./dashboard/admin/order/Edit";
+import SettingThemeAdmin from "./dashboard/admin/setting/Theme";
+import SettingAccountAdmin from "./dashboard/admin/setting/Account";
 
 export {
-  Account,
-  Order,
-  Orders,
-  Setting,
+  SettingLayout,
+  SettingThemeAdmin,
+  SettingAccountAdmin,
+  AddProductAdmin,
+  EditProductAdmin,
+  ProductAdmin,
+  EditOrderAdmin,
+  OrderAdmin,
+  Home,
+  Products,
+  Login,
+  Register,
+  Product,
   Cart,
   Checkout,
-  Login,
-  Product,
-  Products,
-  Home,
-  Register,
+  Layout,
   Dashboard,
-  ProductAdmin,
-  ProductAdd,
-  ProductEdit,
 };
