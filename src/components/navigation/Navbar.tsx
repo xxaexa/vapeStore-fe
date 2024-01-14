@@ -7,11 +7,11 @@ import {
   IoBagHandleOutline,
   IoMenuOutline,
 } from "react-icons/io5";
-import { BiSolidDashboard } from "react-icons/bi";
 import { NavbarProps } from "../../types";
 import Menu from "./Menu";
 import { BiHome } from "react-icons/bi";
 import LargeText from "../text/LargeText";
+import menu from "./../../assets/icons/menu.png";
 
 const Navbar = ({ isSidebar }: NavbarProps) => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const Navbar = ({ isSidebar }: NavbarProps) => {
   const [showCart, setShowCart] = useState<boolean>(false);
 
   return (
-    <nav className="bg-purple-100 text-black fixed w-full z-50 text-2xl">
+    <nav className="bg-purple-100 text-black fixed w-full z-10 text-2xl">
       <ul className="max-w-7xl mx-auto flex gap-2 py-2 md:py-4 justify-between items-center relative pad-custom">
         {isSidebar ? (
           <LargeText text={"Dashboard"} style="font-bold uppercase" />
@@ -55,7 +55,7 @@ const Navbar = ({ isSidebar }: NavbarProps) => {
             </>
           ) : (
             <button onClick={() => navigate("/dashboard")}>
-              <BiSolidDashboard />
+              <img src={menu} alt="" className="w-[20px]" />
             </button>
           )}
         </div>

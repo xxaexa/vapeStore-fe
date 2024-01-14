@@ -17,6 +17,17 @@ export const formatPrice = (price: number | undefined): string => {
   }
 };
 
+export const formatDate = (createdAt: string): string => {
+  const createdAtDate = new Date(createdAt);
+
+  // Format tanggal menjadi string yang diinginkan (misalnya, 'dd/mm/yyyy hh:mm:ss')
+  const formattedDate = `${createdAtDate.getDate()}/${
+    createdAtDate.getMonth() + 1
+  }/${createdAtDate.getFullYear()} ${createdAtDate.getHours()}:${createdAtDate.getMinutes()}:${createdAtDate.getSeconds()}`;
+
+  return formattedDate;
+};
+
 export const addUserToLocalStorage = (user: IUser) => {
   localStorage.setItem("user", JSON.stringify(user));
 };

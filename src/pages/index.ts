@@ -12,18 +12,22 @@ import AddProductAdmin from "./dashboard/admin/product/Add";
 import EditProductAdmin from "./dashboard/admin/product/Edit";
 import SettingLayout from "./dashboard/admin/setting/index";
 import OrderAdmin from "./dashboard/admin/order/";
-import EditOrderAdmin from "./dashboard/admin/order/Edit";
+import OrderDetailAdmin from "./dashboard/admin/order/detail";
 import SettingThemeAdmin from "./dashboard/admin/setting/Theme";
 import SettingAccountAdmin from "./dashboard/admin/setting/Account";
+import OrderMember from "./dashboard/member/order/index";
+import OrderMemberDetail from "./dashboard/member/order/detail";
 
 export {
+  OrderMemberDetail,
+  OrderMember,
   SettingLayout,
   SettingThemeAdmin,
   SettingAccountAdmin,
   AddProductAdmin,
   EditProductAdmin,
   ProductAdmin,
-  EditOrderAdmin,
+  OrderDetailAdmin,
   OrderAdmin,
   Home,
   Products,

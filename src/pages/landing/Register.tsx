@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { createTitlePage } from "../../utils";
 
+import LargeText from "../../components/text/LargeText";
 import RegularText from "../../components/text/RegularText";
 import ImageLogReg from "../../components/image/ImageLogReg";
 const Register = () => {
@@ -28,8 +29,15 @@ const Register = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(values);
-    registerUser(values);
+    if (
+      values.email === "" ||
+      values.password === "" ||
+      values.username === ""
+    ) {
+      return toast.error("Please input ");
+    } else {
+      return registerUser(values);
+    }
   };
 
   useEffect(() => {
@@ -48,7 +56,7 @@ const Register = () => {
     <div className={`min-h-screen flex items-center w-full ${mainColor}`}>
       <ImageLogReg />
       <div className="md:box-shadow rounded-lg text-xl w-full md:w-1/5 p-4">
-        <h2 className="text-2xl my-4 font-bold mb-4">REGISTER</h2>
+        <LargeText text={"REGISTER"} style="font-bold  mb-2" />
         <form onSubmit={handleSubmit} className="flex gap-8 flex-col">
           <Input
             label={"EMAIL"}
@@ -56,6 +64,7 @@ const Register = () => {
             type={"email"}
             value={values.email}
             handleChange={handleChange}
+            style={"text-black rounded-lg"}
           />
 
           <Input
@@ -64,6 +73,7 @@ const Register = () => {
             name={"username"}
             value={values.username}
             handleChange={handleChange}
+            style={"text-black rounded-lg"}
           />
 
           <Input
@@ -72,12 +82,12 @@ const Register = () => {
             type={"password"}
             value={values.password}
             handleChange={handleChange}
+            style={"text-black rounded-lg"}
           />
-          <div className="text-black">
-            <button className="bg-white px-2 py-1 rounded-lg w-24 text-black mx-auto">
-              <RegularText text={"Register"} />
-            </button>
-          </div>
+
+          <button className="bg-white px-2 py-1 rounded-lg w-24 text-black mx-auto">
+            <RegularText text={"Register"} />
+          </button>
 
           <div className="flex gap-2 justify-center">
             <RegularText text={" Have account ?"} />

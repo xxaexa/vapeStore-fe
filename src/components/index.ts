@@ -1,7 +1,8 @@
 import Input from "./form/Input";
 import Card from "./Card";
 import Loading from "./Loading";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./protection/Route";
+import ProtectedRole from "./protection/Role";
 import Sidebar from "./Sidebar";
 import CartTotals from "./CartTotals";
 import ItemCart from "./ItemCart";
@@ -12,6 +13,7 @@ import Slick from "./Slick";
 import RelatedCard from "./RelatedCard";
 import Category from "./Category";
 import OrderBox from "./box/OrderBox";
+import OrderBoxMember from "./box/OrderBoxMember";
 import ProductBox from "./box/ProductBox";
 import HeaderDashboard from "./header/HeaderDashboard";
 import CategoryInput from "./Categories";
@@ -20,8 +22,11 @@ import DashCont from "./container/DashCont";
 import BottomDash from "./footer/BottomDash";
 import HeaderAE from "./header/HeaderAE";
 import BottomAE from "./footer/BottomAE";
+import Modal from "./modal/Danger";
 
 export {
+  OrderBoxMember,
+  Modal,
   BottomAE,
   HeaderAE,
   BottomDash,
@@ -40,6 +45,7 @@ export {
   Card,
   Loading,
   ProtectedRoute,
+  ProtectedRole,
   Sidebar,
   CartTotals,
   Order,

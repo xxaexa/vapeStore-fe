@@ -7,7 +7,7 @@ export const orderApi = createApi({
   baseQuery: customFetchBase,
   tagTypes: ["Order"],
   endpoints: (builder) => ({
-    createOrder: builder.mutation<IOrderResponse, CheckoutState>({
+    createOrder: builder.mutation<{}, CheckoutState>({
       query(values) {
         return {
           url: "/order/",
@@ -16,22 +16,23 @@ export const orderApi = createApi({
         };
       },
     }),
-    getOrdersUser: builder.query<IOrderResponse[], string | undefined>({
+    getOrderUser: builder.query<IOrderResponse[], string | undefined>({
       query(id) {
         return {
-          url: `/order/${id}`,
+          url: `/order/user/${id}`,
         };
       },
-      providesTags: (result) =>
-        result
+      providesTags: (result, id) => {
+        return result
           ? [
               ...result.map(({ _id }) => ({
                 type: "Order" as const,
                 _id,
               })),
-              { type: "Order", _id: "LIST" },
+              { type: "Order", _id: id || "LIST_USER" },
             ]
-          : [{ type: "Order", _id: "LIST" }],
+          : [{ type: "Order", _id: id || "LIST_USER" }];
+      },
       transformResponse: (results: IOrderResponse[]) => results,
     }),
     getOrders: builder.query<IOrderResponse[], void>({
@@ -47,9 +48,27 @@ export const orderApi = createApi({
                 type: "Order" as const,
                 _id,
               })),
-              { type: "Order", _id: "LIST" },
+              { type: "Order", _id: "LIST ALL" },
             ]
-          : [{ type: "Order", _id: "LIST" }],
+          : [{ type: "Order", _id: "LIST ALL" }],
+      transformResponse: (results: IOrderResponse[]) => results,
+    }),
+    getOrder: builder.query<IOrderResponse[], string | undefined>({
+      query(id) {
+        return {
+          url: `/order/detail/${id}`,
+        };
+      },
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ _id }) => ({
+                type: "Order" as const,
+                _id,
+              })),
+              { type: "Order", _id: "LIST ALL" },
+            ]
+          : [{ type: "Order", _id: "LIST ALL" }],
       transformResponse: (results: IOrderResponse[]) => results,
     }),
   }),
@@ -58,5 +77,6 @@ export const orderApi = createApi({
 export const {
   useCreateOrderMutation,
   useGetOrdersQuery,
-  useGetOrdersUserQuery,
+  useGetOrderUserQuery,
+  useGetOrderQuery,
 } = orderApi;

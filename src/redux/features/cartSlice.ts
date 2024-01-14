@@ -38,7 +38,7 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action: PayloadAction<{ product: Product }>) => {
       const { product } = action.payload;
-      console.log(product);
+
       const item = state.cartItems.find(
         (i) => i.cartID === (product && product.cartID)
       );
@@ -63,7 +63,7 @@ const cartSlice = createSlice({
     ) => {
       const { cartID } = action.payload;
       const product = state.cartItems.find((i) => i.cartID === cartID);
-      console.log(cartID);
+
       if (product) {
         state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
         state.numItemsInCart -= product.amount;
@@ -74,7 +74,7 @@ const cartSlice = createSlice({
     },
     editItem: (
       state,
-      action: PayloadAction<{ cartID: string; amount: number }>
+      action: PayloadAction<{ cartID: string | undefined; amount: number }>
     ) => {
       const { cartID, amount } = action.payload;
       const item = state.cartItems.find((i) => i.cartID === cartID);
@@ -83,8 +83,12 @@ const cartSlice = createSlice({
         state.cartTotal += item.price * (amount - item.amount);
         item.amount = amount;
         cartSlice.caseReducers.calculateTotals(state);
-        toast.success("Keranjang diperbarui");
       }
+    },
+    setShipping: (state, action: PayloadAction<{ shipping: number }>) => {
+      const { shipping } = action.payload;
+      state.shipping = shipping;
+      cartSlice.caseReducers.calculateTotals(state);
     },
     calculateTotals: (state) => {
       state.orderTotal = state.cartTotal + state.shipping;
@@ -93,6 +97,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItem, clearCart, removeItem, editItem } = cartSlice.actions;
+export const { addItem, clearCart, removeItem, editItem, setShipping } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

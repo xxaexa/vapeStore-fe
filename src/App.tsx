@@ -14,11 +14,13 @@ import {
   EditProductAdmin,
   SettingLayout,
   OrderAdmin,
-  EditOrderAdmin,
+  OrderDetailAdmin,
   SettingThemeAdmin,
   SettingAccountAdmin,
+  OrderMember,
+  OrderMemberDetail,
 } from "./pages";
-import { ProtectedRoute } from "./components";
+import { ProtectedRoute, ProtectedRole } from "./components";
 
 const App = () => {
   return (
@@ -26,7 +28,14 @@ const App = () => {
       <Route path="/" element={<Home />}>
         <Route index element={<Products />} />
         <Route path="/product/:id" element={<Product />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/checkout" element={<Checkout />} />
         <Route
           path="/dashboard"
@@ -97,7 +106,10 @@ const App = () => {
             path="order"
             element={
               <ProtectedRoute>
-                <OrderAdmin />
+                <ProtectedRole
+                  admin={<OrderAdmin />}
+                  member={<OrderMember />}
+                />
               </ProtectedRoute>
             }
           />
@@ -105,7 +117,10 @@ const App = () => {
             path="order/:id"
             element={
               <ProtectedRoute>
-                <EditOrderAdmin />
+                <ProtectedRole
+                  admin={<OrderDetailAdmin />}
+                  member={<OrderMemberDetail />}
+                />
               </ProtectedRoute>
             }
           />

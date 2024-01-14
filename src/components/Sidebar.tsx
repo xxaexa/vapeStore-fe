@@ -25,7 +25,8 @@ const Sidebar = () => {
         >
           <div
             className={`sidebar-text duration-500 ease-in-out ${
-              location.pathname === "/dashboard/order"
+              location.pathname === "/dashboard/order" ||
+              location.pathname === `/dashboard/order/${id}`
                 ? "bg-white px-4 rounded-l-lg"
                 : "bg-purple-100"
             }`}
@@ -34,21 +35,25 @@ const Sidebar = () => {
             <IconText icon={<CiViewTable />} />
             <LargeText text={"Order"} />
           </div>
-          <div
-            className={`sidebar-text duration-500 ease-in-out ${
-              location.pathname === "/dashboard/product" ||
-              location.pathname === "/dashboard/product/add" ||
-              location.pathname === `/dashboard/product/edit/${id}`
-                ? "bg-white px-4 rounded-l-lg"
-                : "bg-purple-100"
-            }`}
-            onClick={() =>
-              navigate(`${user.user?.isAdmin ? "/dashboard/product" : "/"}`)
-            }
-          >
-            <IconText icon={<PiPackageThin />} />
-            <LargeText text={"Product"} />
-          </div>
+          {user.user.isAdmin ? (
+            <div
+              className={`sidebar-text duration-500 ease-in-out ${
+                location.pathname === "/dashboard/product" ||
+                location.pathname === "/dashboard/product/add" ||
+                location.pathname === `/dashboard/product/edit/${id}`
+                  ? "bg-white px-4 rounded-l-lg"
+                  : "bg-purple-100"
+              }`}
+              onClick={() =>
+                navigate(`${user.user?.isAdmin ? "/dashboard/product" : "/"}`)
+              }
+            >
+              <IconText icon={<PiPackageThin />} />
+              <LargeText text={"Product"} />
+            </div>
+          ) : (
+            <></>
+          )}
           <div
             className={`sidebar-text duration-500 ease-in-out ${
               location.pathname === "/dashboard/setting" ||

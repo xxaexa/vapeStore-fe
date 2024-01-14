@@ -1,10 +1,14 @@
-import { DashCont, HeaderDashboard, OrderBox } from "../../../../components";
+import {
+  DashCont,
+  HeaderDashboard,
+  OrderBoxMember,
+} from "../../../../components";
 
 const index = () => {
   return (
     <DashCont>
-      <HeaderDashboard text="ORDER" />
-      <OrderBox />
+      <HeaderDashboard text="ORDER MEMBER" />
+      <OrderBoxMember />
     </DashCont>
   );
 };

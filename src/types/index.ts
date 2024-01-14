@@ -3,6 +3,7 @@ import React, { ChangeEvent } from "react";
 export interface HeaderAEProps {
   text: string;
   link: string;
+  isOrderPage?: boolean;
 }
 export interface ListBoxProps {
   id: string;
@@ -60,7 +61,6 @@ export interface ProductState {
   amount: number;
 }
 export interface CheckoutState {
-  _id: string;
   userName: string;
   address: string;
   userId: number;
@@ -159,6 +159,8 @@ export interface IOrderResponse {
   amount: number;
   orderTotal: number;
   status: string;
+  orderId: string;
+  createdAt: string;
 }
 
 export interface CardProps {
@@ -177,9 +179,11 @@ export interface CustomInputProps {
   value: string | number | undefined;
   label?: string;
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  style?: string;
 }
 
 export interface ItemCartProps {
+  amount: number;
   cartID: string | undefined;
   img: string | undefined;
   title: string | undefined;
@@ -198,7 +202,7 @@ export interface OrderBoxProps {
 }
 
 export interface CartTotalsProps {
-  isCartPage: boolean;
+  isCartPage?: boolean;
 }
 
 export interface ContainerProps {

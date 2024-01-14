@@ -2,6 +2,12 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "../redux/store";
 import { setCategory, resetCategory } from "../redux/features/categorySlice";
 import RegularText from "./text/RegularText";
+import mod from "./../assets/icons/mod.png";
+import pod from "./../assets/icons/pod.png";
+import liquid from "./../assets/icons/liquid.png";
+import rda from "./../assets/icons/atomizer.png";
+import all from "./../assets/icons/grid.png";
+import cat from "./../assets/icons/cart.png";
 
 const Category = () => {
   const dispatch = useDispatch();
@@ -16,6 +22,7 @@ const Category = () => {
         }  `}
         onClick={() => dispatch(resetCategory())}
       >
+        <img src={all} alt="" className="w-[20px] px-0.5 mx-auto py-1" />
         <RegularText
           style={`flex cursor-pointer group  transition-all duration-300 ease-in-out bg-left-bottom bg-gradient-to-r from-indigo-500 to-pink-500  bg-no-repeat hover:bg-[length:100%_2px] ${
             category === ""
@@ -26,10 +33,11 @@ const Category = () => {
         />
       </p>
       {/* mod categories */}
-      <p
-        className={`cursor-pointer group  transition-all duration-300 ease-in-out`}
+      <div
+        className={`cursor-pointer flex flex-col items-center group  transition-all duration-300 ease-in-out`}
         onClick={() => dispatch(setCategory("Mod"))}
       >
+        <img src={mod} alt="" className="w-[25px]" />
         <RegularText
           style={`flex cursor-pointer group  transition-all duration-300 ease-in-out bg-left-bottom bg-gradient-to-r from-indigo-500 to-pink-500  bg-no-repeat hover:bg-[length:100%_2px] ${
             category === "Mod"
@@ -38,12 +46,13 @@ const Category = () => {
           }`}
           text={"MOD"}
         />
-      </p>
+      </div>
       {/* pod categories */}
-      <p
-        className={`cursor-pointer group  transition-all duration-300 ease-in-out`}
+      <div
+        className={`cursor-pointer flex flex-col items-center group  transition-all duration-300 ease-in-out`}
         onClick={() => dispatch(setCategory("Pod"))}
       >
+        <img src={pod} alt="" className="w-[25px]" />
         <RegularText
           style={`flex cursor-pointer group  transition-all duration-300 ease-in-out bg-left-bottom bg-gradient-to-r from-indigo-500 to-pink-500  bg-no-repeat hover:bg-[length:100%_2px] ${
             category === "Pod"
@@ -52,13 +61,14 @@ const Category = () => {
           }`}
           text={"POD"}
         />
-      </p>
+      </div>
 
       {/* liquid categories */}
-      <p
-        className={`cursor-pointer group  transition-all duration-300 ease-in-out`}
+      <div
+        className={`cursor-pointer flex flex-col items-center justify-center group  transition-all duration-300 ease-in-out`}
         onClick={() => dispatch(setCategory("Liquid"))}
       >
+        <img src={liquid} alt="" className="w-[25px]" />
         <RegularText
           style={`flex cursor-pointer group  transition-all duration-300 ease-in-out bg-left-bottom bg-gradient-to-r from-indigo-500 to-pink-500  bg-no-repeat hover:bg-[length:100%_2px] ${
             category === "Liquid"
@@ -67,13 +77,14 @@ const Category = () => {
           }`}
           text={"LIQUID"}
         />
-      </p>
+      </div>
 
       {/* RDA*/}
       <p
         className={`cursor-pointer group  transition-all duration-300 ease-in-out`}
         onClick={() => dispatch(setCategory("Catridge"))}
       >
+        <img src={cat} alt="" className="w-[25px] mx-auto block" />
         <RegularText
           style={`flex cursor-pointer group  transition-all duration-300 ease-in-out bg-left-bottom bg-gradient-to-r from-indigo-500 to-pink-500  bg-no-repeat hover:bg-[length:100%_2px] ${
             category === "Catridge"
@@ -85,10 +96,11 @@ const Category = () => {
       </p>
 
       {/* RDA*/}
-      <p
-        className={`cursor-pointer group  transition-all duration-300 ease-in-out`}
+      <div
+        className={`cursor-pointer flex items-center flex-col justify-center group  transition-all duration-300 ease-in-out`}
         onClick={() => dispatch(setCategory("RDA"))}
       >
+        <img src={rda} alt="" className="w-[25px]" />
         <RegularText
           style={`flex cursor-pointer group  transition-all duration-300 ease-in-out bg-left-bottom bg-gradient-to-r from-indigo-500 to-pink-500  bg-no-repeat hover:bg-[length:100%_2px] ${
             category === "RDA"
@@ -97,7 +109,7 @@ const Category = () => {
           }`}
           text={"RDA"}
         />
-      </p>
+      </div>
     </div>
   );
 };

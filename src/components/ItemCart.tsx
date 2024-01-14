@@ -1,28 +1,30 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { formatPrice } from "../utils/";
 import { removeItem } from "../redux/features/cartSlice";
 import { ItemCartProps } from "../types";
 import { AiOutlineDelete } from "react-icons/ai";
 import RegularText from "./text/RegularText";
-const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
-  const [amount, setAmount] = useState(1);
+import { editItem } from "../redux/features/cartSlice";
+
+const ItemCart = ({ cartID, img, title, price, amount }: ItemCartProps) => {
   const dispatch = useDispatch();
 
   const handleRemove = () => {
     dispatch(removeItem({ cartID: cartID }));
   };
 
+  console.log(amount);
+
   return (
     <div
       key={cartID}
-      className="mb-12 flex gap-y-4 lg:flex-row flex-wrap  border-base-300 last:border-b-0 text-xl justify-between "
+      className="my-6 flex gap-y-4 lg:flex-row flex-wrap justify-between p-4 box-shadow rounded-lg"
     >
       {/* IMAGE */}
       <img
         src={img}
         alt={title}
-        className="w-1/2 md:h-52 md:w-52 rounded-lg object-cover"
+        className="rounded-lg object-cover text-xs md:text-lg  w-[150px] md:w-[200px]"
       />
       {/* INFO */}
       <div className="flex flex-col lg:text-right justify-between ">
@@ -38,9 +40,10 @@ const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
                 className="w-8 h-8"
                 onClick={() => {
                   if (amount === 1) {
-                    return 1;
+                    return; // Tidak melakukan apa-apa jika amount sudah 1
                   } else {
-                    setAmount(amount - 1);
+                    const newAmount = amount - 1;
+                    dispatch(editItem({ cartID, amount: newAmount }));
                   }
                 }}
               >
@@ -49,13 +52,17 @@ const ItemCart = ({ cartID, img, title, price }: ItemCartProps) => {
 
               <RegularText text={amount} style="text-xl" />
 
-              <button className="w-8 h-8" onClick={() => setAmount(amount + 1)}>
+              <button
+                className="w-8 h-8"
+                onClick={() => {
+                  const newAmount = amount + 1;
+                  dispatch(editItem({ cartID, amount: newAmount }));
+                }}
+              >
                 <RegularText text={"+"} style="text-center" />
               </button>
             </div>
           </label>
-
-          <br />
         </div>
 
         <RegularText text={formatPrice(price * amount)} />

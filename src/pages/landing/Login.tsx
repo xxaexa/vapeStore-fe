@@ -36,6 +36,26 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (values.email === "" || values.password === "") {
+      return toast.error("Please input ");
+    } else {
+      const user = await loginUser(values).unwrap();
+      dispatch(setUser(user));
+    }
+  };
+
+  const handleLoginAdmin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    values.email = import.meta.env.VITE_DEMO_ADMIN_EMAIL;
+    values.password = import.meta.env.VITE_DEMO_ADMIN_PASSWORD;
+    const user = await loginUser(values).unwrap();
+    dispatch(setUser(user));
+  };
+
+  const handleLoginMember = async (e: React.FormEvent) => {
+    e.preventDefault();
+    values.email = import.meta.env.VITE_DEMO_MEMBER_EMAIL;
+    values.password = import.meta.env.VITE_DEMO_MEMBER_PASSWORD;
     const user = await loginUser(values).unwrap();
     dispatch(setUser(user));
   };
@@ -70,6 +90,7 @@ const Login = () => {
             name={"email"}
             value={values.email}
             handleChange={handleChange}
+            style={"text-black rounded-lg"}
           />
 
           <Input
@@ -78,16 +99,25 @@ const Login = () => {
             type={"password"}
             value={values.password}
             handleChange={handleChange}
+            style={"text-black rounded-lg"}
           />
           <div className="text-black flex flex-col space-y-4">
             <button className="bg-white px-2 py-1 rounded-lg w-24 mx-auto">
               <RegularText text={"Login"} />
             </button>
             <button
-              type="submit"
+              onClick={handleLoginAdmin}
+              type="button"
               className="bg-white px-2 py-1 rounded-lg  mx-auto"
             >
-              <RegularText text={"Login Demo Account"} />
+              <RegularText text={"Login Demo Admin"} />
+            </button>
+            <button
+              onClick={handleLoginMember}
+              type="button"
+              className="bg-white px-2 py-1 rounded-lg  mx-auto"
+            >
+              <RegularText text={"Login Demo Member"} />
             </button>
           </div>
           <div className="flex gap-2 justify-center">

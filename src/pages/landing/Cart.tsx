@@ -1,6 +1,6 @@
 import { ItemCart, Navbar, CartTotals } from "../../components";
 import { Link, useNavigate } from "react-router-dom";
-import { getUserFromLocalStorage, createTitlePage } from "../../utils/";
+import { createTitlePage } from "../../utils/";
 import { useAppSelector } from "../../redux/store";
 import { toggleFalse } from "./../../redux/features/toggleSlice";
 import { useEffect } from "react";
@@ -11,7 +11,6 @@ import RegularText from "../../components/text/RegularText";
 const Cart = () => {
   createTitlePage("Cart");
   const cartState = useAppSelector((state) => state.cartState);
-  const user = getUserFromLocalStorage();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -22,25 +21,13 @@ const Cart = () => {
   return (
     <div className="">
       <Navbar isSidebar={false} />
-      {!user ? (
-        <div className="mt-24">
-          <p className="text-2xl text-center">
-            You are not logged in, please login
-          </p>
-          <button
-            className="mx-auto block px-2 py-1 rounded-lg bg-purple-700 text-white text-2xl mt-8"
-            onClick={() => navigate("/login")}
-          >
-            LOGIN
-          </button>
-        </div>
-      ) : (
+      {
         <div className="px-4 md:px-0 max-w-7xl mx-auto pt-[46px] md:pt-[66px]">
           {cartState?.cartItems?.length === 0 ? (
             <div className="mt-24">
-              <RegularText text={"cart is empty"} />
+              <RegularText text={"cart is empty"} style="text-center" />
               <Link to={"/"}>
-                <button className="mt-12 mx-auto blockuppercase bg-purple-300 px-4 py-1 rounded-lg hover:text-white duration-300 ease-out">
+                <button className="mt-12 mx-auto block uppercase bg-purple-300 px-4 py-1 rounded-lg hover:text-white duration-300 ease-out">
                   <RegularText text={" Add Some Product"} />
                 </button>
               </Link>
@@ -49,20 +36,19 @@ const Cart = () => {
             <>
               <LargeText
                 text={"CART"}
-                style="font-semibold mb-4 border-b-[1px] border-black"
+                style="font-semibold border-b-[1px] border-black"
               />
-
-              <div className="flex gap-12 flex-col lg:flex-row">
-                <div className="lg:w-3/5 p-4 box-shadow ">
+              <div className="flex gap-12 flex-col md:flex-row relative">
+                <div className="md:w-3/5">
                   {cartState?.cartItems?.map((c, index) => (
                     <ItemCart key={index} {...c} />
                   ))}
                 </div>
-                <div className="lg:w-2/5 h-[260px] p-4 box-shadow rounded-lg">
+                <div className="hidden md:flex lg:w-2/5 h-fit p-4 box-shadow rounded-lg mt-6 flex-col">
                   <CartTotals isCartPage={true} />
-                  <div className="flex justify-end md:block">
+                  <div className="flex justify-end ">
                     <button
-                      className="text-lg mt-4 w-[114px] md:w-32 size-custom text-green-400 rounded-lg border-2 border-green-400 hover:text-white hover:bg-green-400"
+                      className="text-lg mt-4 w-[114px] size-custom text-green-400 rounded-lg border-2 border-green-400 hover:text-white hover:bg-green-400"
                       onClick={() => navigate("/checkout")}
                     >
                       <RegularText text={"Checkout"} />
@@ -73,7 +59,19 @@ const Cart = () => {
             </>
           )}
         </div>
-      )}
+      }
+
+      <div className="fixed bottom-0 w-full md:hidden px-4 py-2 box-shadow rounded-t-lg bg-purple-100 flex justify-between">
+        <CartTotals />
+        <div className="flex justify-end md:block mt-2">
+          <button
+            className="text-lg w-16 size-custom text-green-900 rounded-lg bg-white "
+            onClick={() => navigate("/checkout")}
+          >
+            <RegularText text={"Checkout"} />
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
