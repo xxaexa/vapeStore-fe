@@ -14,7 +14,7 @@ const Category = () => {
   const category = useAppSelector((state) => state.categoryState.category);
 
   return (
-    <div className="pl-4 md:pl-0 mt-2 flex md:justify-center items-center p-2 text-xl lg:text-2xl uppercase gap-4 flex-row shrink-0 overflow-auto">
+    <div className="pl-4 md:pl-0 mt-8 flex md:justify-center items-center p-2 text-xl lg:text-2xl uppercase gap-4 flex-row shrink-0 overflow-auto">
       {/* all categories */}
       <p
         className={`cursor-pointer group  transition-all duration-300 ease-in-out ${

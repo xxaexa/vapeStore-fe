@@ -2,9 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CardProps } from "../types";
 import RegularText from "./text/RegularText";
-import img from "./../assets/bg/man.jpg";
 
-const Card = ({ title }: CardProps) => {
+const Card = ({ title, img }: CardProps) => {
   const navigate = useNavigate();
 
   const [isHovering, setIsHovering] = useState(false);

@@ -9,6 +9,7 @@ const CartTotals = ({
   isCheckoutPage,
 }: CartTotalsProps) => {
   const cartState = useAppSelector((state) => state.cartState);
+
   return (
     <div className="">
       {isCheckoutPage ? (

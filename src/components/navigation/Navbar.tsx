@@ -2,11 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../../redux/features/toggleSlice";
-import {
-  IoSearchOutline,
-  IoBagHandleOutline,
-  IoMenuOutline,
-} from "react-icons/io5";
+import { IoBagHandleOutline, IoMenuOutline } from "react-icons/io5";
 import { NavbarProps } from "../../types";
 import Menu from "./Menu";
 import { BiHome } from "react-icons/bi";
@@ -24,9 +20,7 @@ const Navbar = ({ isSidebar }: NavbarProps) => {
         {isSidebar ? (
           <LargeText text={"Dashboard"} style="font-bold uppercase" />
         ) : (
-          <button className="text-2xl">
-            <IoSearchOutline />
-          </button>
+          <LargeText text={"VAPE-STORE"} style="font-bold uppercase" />
         )}
         <div className="flex items-center gap-3">
           <button

@@ -12,6 +12,7 @@ import LargeText from "../../components/text/LargeText";
 import RegularText from "../../components/text/RegularText";
 import { getUserFromLocalStorage } from "../../utils/";
 import { setShipping } from "../../redux/features/cartSlice";
+import { formatPrice } from "../../utils/";
 
 const Checkout = () => {
   createTitlePage("Checkout");
@@ -39,13 +40,18 @@ const Checkout = () => {
 
   const handleShipping = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setShipping({ shipping: parseInt(e.currentTarget.value, 10) }));
+    values.shipping = parseInt(e.currentTarget.value, 10);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    createOrder(values);
-    console.log(values);
+    if (values.address === "") {
+      toast.error("Input Address ");
+    } else if (values.shipping === 0) {
+      toast.error("Choose shipping");
+    } else {
+      createOrder(values);
+    }
   };
 
   useEffect(() => {
@@ -92,6 +98,27 @@ const Checkout = () => {
                 <option value="20000">Regular</option>
               </select>
             </div>
+            <div className="mt-6 md:hidden grid gap-8 grid-cols-1 items-start">
+              <div className="box-shadow p-4">
+                <RegularText text={"Product"} />
+                {cartState?.cartItems?.map((product) => (
+                  <div className="flex flex-row justify-between my-4 border-[1px] border-purple-400 rounded-lg p-2">
+                    <img
+                      src={product.img}
+                      alt={product.title}
+                      className="w-[120px]"
+                    />
+                    <div className="flex flex-col justify-between">
+                      <RegularText text={product.title} style="text-right" />
+                      <RegularText
+                        text={formatPrice(product.price)}
+                        style="text-right"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
             <div className=" box-shadow p-4 ">
               <CartTotals />
               <div className="flex justify-end md:block mt-2 ">
@@ -102,6 +129,27 @@ const Checkout = () => {
                   <RegularText text={"PAY"} />
                 </button>
               </div>
+            </div>
+          </div>
+          <div className="mt-6 hidden md:grid gap-8 grid-cols-2  items-start">
+            <div className="box-shadow p-4">
+              <RegularText text={"Product"} />
+              {cartState?.cartItems?.map((product) => (
+                <div className="flex flex-row justify-between my-4 border-[1px] border-purple-400 rounded-lg p-2">
+                  <img
+                    src={product.img}
+                    alt={product.title}
+                    className="w-[120px]"
+                  />
+                  <div className="flex flex-col justify-between">
+                    <RegularText text={product.title} style="text-right" />
+                    <RegularText
+                      text={formatPrice(product.price)}
+                      style="text-right"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </form>
