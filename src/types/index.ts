@@ -202,7 +202,9 @@ export interface OrderBoxProps {
 }
 
 export interface CartTotalsProps {
+  isBottomComp?: boolean;
   isCartPage?: boolean;
+  isCheckoutPage?: boolean;
 }
 
 export interface ContainerProps {

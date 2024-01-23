@@ -7,7 +7,7 @@ import pod from "./../assets/icons/pod.png";
 import liquid from "./../assets/icons/liquid.png";
 import rda from "./../assets/icons/atomizer.png";
 import all from "./../assets/icons/grid.png";
-import cat from "./../assets/icons/cart.png";
+import cat from "./../assets/icons/catridge.png";
 
 const Category = () => {
   const dispatch = useDispatch();

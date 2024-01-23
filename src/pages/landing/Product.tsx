@@ -62,6 +62,7 @@ const Product = () => {
                       return navigate("/cart");
                     } else {
                       dispatch(addItem({ product: cartProduct }));
+                      console.log(cartProduct);
                       navigate("/cart");
                     }
                   }}

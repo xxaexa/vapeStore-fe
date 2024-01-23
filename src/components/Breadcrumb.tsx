@@ -24,7 +24,7 @@ const Breadcrumb = ({ breadCrumbs }: BreadcrumbProps) => {
 
   const { id } = useParams();
   return (
-    <div className="w-container my-4">
+    <div key="1" className="w-container my-4">
       <Link
         key="1"
         to="/"

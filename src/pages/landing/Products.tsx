@@ -28,13 +28,13 @@ const Products = () => {
         {isLoading ? (
           <Loading />
         ) : category != "" ? (
-          <div className="grid md:grid-cols-3 gird-cols-1 gap-8 pad-custom mt-4">
+          <div className="grid md:grid-cols-3 grid-cols-2 gap-8 pad-custom mt-4">
             {FilteredProducts!.map((product) => (
               <Card key={product._id} {...product} />
             ))}
           </div>
         ) : (
-          <div className="grid md:grid-cols-3 gird-cols-1 gap-8 pad-custom mt-4">
+          <div className="grid grid-cols-2 md:grid-cols-3  gap-8 pad-custom mt-4">
             {products.map((product) => (
               <Card key={product._id} {...product} />
             ))}

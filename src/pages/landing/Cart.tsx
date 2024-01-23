@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import LargeText from "../../components/text/LargeText";
 import RegularText from "../../components/text/RegularText";
+import { resetShipping } from "../../redux/features/cartSlice";
 
 const Cart = () => {
   createTitlePage("Cart");
@@ -16,6 +17,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(toggleFalse());
+    dispatch(resetShipping());
   }, []);
 
   return (
@@ -45,7 +47,7 @@ const Cart = () => {
                   ))}
                 </div>
                 <div className="hidden md:flex lg:w-2/5 h-fit p-4 box-shadow rounded-lg mt-6 flex-col">
-                  <CartTotals isCartPage={true} />
+                  <CartTotals isBottomComp={true} />
                   <div className="flex justify-end ">
                     <button
                       className="text-lg mt-4 w-[114px] size-custom text-green-400 rounded-lg border-2 border-green-400 hover:text-white hover:bg-green-400"
@@ -62,7 +64,7 @@ const Cart = () => {
       }
 
       <div className="fixed bottom-0 w-full md:hidden px-4 py-2 box-shadow rounded-t-lg bg-purple-100 flex justify-between">
-        <CartTotals />
+        <CartTotals isCartPage={true} isBottomComp={true} />
         <div className="flex justify-end md:block mt-2">
           <button
             className="text-lg w-16 size-custom text-green-900 rounded-lg bg-white "

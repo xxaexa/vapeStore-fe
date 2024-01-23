@@ -92,17 +92,14 @@ const Checkout = () => {
                 <option value="20000">Regular</option>
               </select>
             </div>
-            <div className="box-shadow p-4 ">
+            <div className=" box-shadow p-4 ">
               <CartTotals />
               <div className="flex justify-end md:block mt-2 ">
                 <button
-                  className="text-lg w-16 size-custom text-green-900 rounded-lg bg-white block ml-auto"
+                  className="hidden md:block w-16 size-custom box-shadow bg-white  ml-auto text-lg mt-4 size-custom text-green-400 rounded-lg border- border-green-400 hover:text-white hover:bg-green-400"
                   onClick={() => navigate("/checkout")}
                 >
-                  <RegularText
-                    text={"PAY"}
-                    style="text-lg mt-4 size-custom text-green-400 rounded-lg border- border-green-400 hover:text-white hover:bg-green-400"
-                  />
+                  <RegularText text={"PAY"} />
                 </button>
               </div>
             </div>
@@ -110,16 +107,13 @@ const Checkout = () => {
         </form>
       </div>
       <div className="fixed bottom-0 w-full md:hidden px-4 py-2 box-shadow rounded-t-lg bg-purple-100 flex justify-between">
-        <CartTotals />
-        <div className="flex justify-end md:block mt-2">
+        <CartTotals isBottomComp={true} isCheckoutPage={true} />
+        <div className="flex items-center">
           <button
-            className="text-lg w-16 size-custom text-green-900 rounded-lg bg-white "
+            className="text-lg w-16 size-custom text-green-400 rounded-lg bg-white "
             onClick={() => navigate("/checkout")}
           >
-            <RegularText
-              text={"PAY"}
-              style="text-lg mt-4 w-[114px] size-custom text-green-400 rounded-lg border-2 border-green-400 hover:text-white hover:bg-green-400"
-            />
+            <RegularText text={"PAY"} />
           </button>
         </div>
       </div>
